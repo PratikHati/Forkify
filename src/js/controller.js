@@ -29,11 +29,21 @@ const spinnerRender = function (parentObj) {
 };
 
 const showRecipe = async function () {
+
   try {
-    //1. Loading recipe
+    //1.Loading recipe
+
     //async is used to create a new thread with out affecting original application thread
+
+    const id = window.location.hash.slice(1);
+    console.log(id);
     spinnerRender(recipeContainer);
-    const res = await fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886');  //ajax call
+
+    if (id == null) {
+      return;
+    }
+
+    const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`);  //ajax call
 
     const data = await res.json();
 
@@ -41,7 +51,7 @@ const showRecipe = async function () {
       throw new Error(data.Error);
     }
     else {
-      console.log(res, data);
+      console.log(res, data);//testing purpose
 
       let { recipe } = data.data;
 
@@ -121,7 +131,7 @@ const showRecipe = async function () {
                   <div class="recipe__description">
                     <span class="recipe__unit">${ing.unit}</span>
                     ${ing.description}
-                  </div>
+                    </div>
                 </li>
               `}).join('')};
 
@@ -155,9 +165,8 @@ const showRecipe = async function () {
   catch (err) {
     alert(err);
   }
-}
+};
 
-showRecipe();
-
-
+['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
+//window.addEventListener('hashchange', showRecipe); //when user clicks on recipe, "showRecipe()" must invoke
 
