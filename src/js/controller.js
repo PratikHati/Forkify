@@ -24,13 +24,14 @@ const showRecipe = async function () {
   try {
     //async is used to create a new thread with out affecting original application thread
 
-    const id = window.location.hash.slice(1);
-    console.log(id);
+    const id = window.location.hash.slice(1); //get id from query string
+    //console.log(id);
 
     //if null pls return
     if (id == null) {
       return;
     }
+
     //1.Loading recipe
     recipeView.spinnerRender();
 

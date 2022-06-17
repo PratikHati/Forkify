@@ -523,8 +523,8 @@ const timeout = function(s) {
 const showRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
-        const id = window.location.hash.slice(1);
-        console.log(id);
+        const id = window.location.hash.slice(1); //get id from query string
+        //console.log(id);
         //if null pls return
         if (id == null) return;
         //1.Loading recipe
@@ -2488,21 +2488,7 @@ class RecipeView {
           <div class="recipe__ingredients">
             <h2 class="heading--2">Recipe ingredients</h2>
             <ul class="recipe__ingredient-list">
-              ${this.#data.ingredients.map((ing)=>{
-            return `
-                <li class="recipe__ingredient">
-                  <svg class="recipe__icon">
-                    <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
-                  </svg>
-                  <div class="recipe__quantity"> * ${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ""}</div>
-                  <div class="recipe__description">
-                    <span class="recipe__unit">${ing.unit}</span>
-                    ${ing.description}
-                    </div>
-                </li>
-              `;
-        }).join("")};
-
+              ${this.#data.ingredients.map(this.#generateMarkupIngrdient).join("")};
             </ul>
           </div>
 
@@ -2525,7 +2511,9 @@ class RecipeView {
             </a>
           </div>
       `;
-    //recipeContainer.insertAdjacentHTML("afterbegin", markup);
+    }
+     #generateMarkupIngrdient(ing) {
+        return;
     }
 }
 exports.default = new RecipeView();

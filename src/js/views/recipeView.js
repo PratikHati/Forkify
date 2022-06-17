@@ -2,36 +2,36 @@ import { Fraction } from 'fractional';
 import icons from 'url:../../img/icons.svg'; //parcel 2
 
 class RecipeView {
-    #parentElement = document.querySelector('.recipe');
-    #data;
+  #parentElement = document.querySelector('.recipe');
+  #data;
 
-    render(data) {
-        this.#data = data;                          //API data  
-        const markup = this.#generateMarkup();
-        //recipeContainer.innerHTML = '';
-        this.#clear();
-        this.#parentElement.insertAdjacentHTML("afterbegin", markup);
-    }
+  render(data) {
+    this.#data = data;                          //API data  
+    const markup = this.#generateMarkup();
+    //recipeContainer.innerHTML = '';
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
 
-    #clear() {
-        this.#parentElement.innerHTML = '';
-    }
+  #clear() {
+    this.#parentElement.innerHTML = '';
+  }
 
-    spinnerRender = function () {
-        const markUp = `
+  spinnerRender = function () {
+    const markUp = `
         <div class="spinner">
           <svg>
             <use href="${icons}#icon-loader"></use>
           </svg>
         </div>
         `;
-        this.#parentElement.innerHTML = '';
-        this.#parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-    };
+    this.#parentElement.innerHTML = '';
+    this.#parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
+  };
 
 
-    #generateMarkup() {                             //Display API data
-        return `
+  #generateMarkup() {                             //Display API data
+    return `
       <figure class="recipe__fig">
             <img src="${this.#data.image}" alt="Tomato" class="recipe__img" />
             <h1 class="recipe__title">
@@ -83,20 +83,7 @@ class RecipeView {
           <div class="recipe__ingredients">
             <h2 class="heading--2">Recipe ingredients</h2>
             <ul class="recipe__ingredient-list">
-              ${this.#data.ingredients.map(ing => {
-            return `
-                <li class="recipe__ingredient">
-                  <svg class="recipe__icon">
-                    <use href="${icons}#icon-check"></use>
-                  </svg>
-                  <div class="recipe__quantity"> * ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}</div>
-                  <div class="recipe__description">
-                    <span class="recipe__unit">${ing.unit}</span>
-                    ${ing.description}
-                    </div>
-                </li>
-              `}).join('')};
-
+              ${this.#data.ingredients.map(this.#generateMarkupIngrdient).join('')};
             </ul>
           </div>
 
@@ -119,9 +106,25 @@ class RecipeView {
             </a>
           </div>
       `;
+  }
 
-        //recipeContainer.insertAdjacentHTML("afterbegin", markup);
-    }
+  #generateMarkupIngrdient(ing) {
+    return
+    `
+        <li class="recipe__ingredient">
+          <svg class="recipe__icon">
+              <use href="${icons}#icon-check"></use>
+                </svg>
+                <div class="recipe__quantity"> * ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}</div>
+                <div class="recipe__description">
+                  <span class="recipe__unit">${ing.unit}</span>
+                  ${ing.description}
+                </div>
+        </li>
+      `;
+  }
+
+  //recipeContainer.insertAdjacentHTML("afterbegin", markup);
 }
 
 export default new RecipeView();
