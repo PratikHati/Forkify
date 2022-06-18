@@ -504,7 +504,7 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"aenu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _esArrayIncludesJs = require("core-js/modules/es.array.includes.js"); //window.addEventListener('hashchange', showRecipe); //when user clicks on recipe, "showRecipe()" must invoke
+var _esArrayIncludesJs = require("core-js/modules/es.array.includes.js");
 var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _runtime = require("regenerator-runtime/runtime");
 var _modelJs = require("./model.js");
@@ -531,10 +531,10 @@ const showRecipe = async function() {
         alert(err);
     }
 };
-[
-    "hashchange",
-    "load"
-].forEach((ev)=>window.addEventListener(ev, showRecipe));
+const init = function() {
+    (0, _recipeViewJsDefault.default).addHandlerRender(showRecipe);
+};
+init();
 
 },{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./model.js":"Y4A21","./views/recipeView.js":"l60JC"}],"dkJzX":[function(require,module,exports) {
 "use strict";
@@ -2450,6 +2450,12 @@ class RecipeView {
     }
      #clear() {
         this.#parentElement.innerHTML = "";
+    }
+    addHandlerRender(handler) {
+        [
+            "hashchange",
+            "load"
+        ].forEach((ev)=>window.addEventListener(ev, handler));
     }
     spinnerRender = function() {
         const markUp = `

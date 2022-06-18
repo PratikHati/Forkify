@@ -17,6 +17,10 @@ class RecipeView {
     this.#parentElement.innerHTML = '';
   }
 
+  addHandlerRender(handler) {
+    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+  }
+
   spinnerRender = function () {
     const markUp = `
         <div class="spinner">

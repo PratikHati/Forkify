@@ -42,6 +42,10 @@ const showRecipe = async function () {
   }
 };
 
-['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
-//window.addEventListener('hashchange', showRecipe); //when user clicks on recipe, "showRecipe()" must invoke
+
+const init = function () {
+  recipeView.addHandlerRender(showRecipe);
+}
+
+init();
 
