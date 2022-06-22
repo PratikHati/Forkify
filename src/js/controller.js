@@ -38,7 +38,8 @@ const showRecipe = async function () {
   }
 
   catch (err) {
-    alert(err);
+    //alert(err);
+    recipeView.renderError();
   }
 };
 
