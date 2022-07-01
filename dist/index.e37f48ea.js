@@ -510,10 +510,9 @@ var _runtime = require("regenerator-runtime/runtime");
 var _modelJs = require("./model.js");
 var _recipeViewJs = require("./views/recipeView.js");
 var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
-const recipeContainer = document.querySelector(".recipe");
-// https://forkify-api.herokuapp.com/v2
-///////////////////////////////////////
-const showRecipe = async function() {
+var _searchViewJs = require("./views/searchView.js");
+var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
+const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
         const id = window.location.hash.slice(1); //get id from query string
@@ -532,12 +531,28 @@ const showRecipe = async function() {
         (0, _recipeViewJsDefault.default).renderError();
     }
 };
+const controlSearch = async function() {
+    try {
+        //1. GET
+        const query = (0, _searchViewJsDefault.default).getQuery();
+        if (!query) return;
+        //2.  Load
+        await _modelJs.loadSearchResult(query);
+        //3.Render
+        console.log(_modelJs.state.search.result);
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+//first init() will run when page load
 const init = function() {
-    (0, _recipeViewJsDefault.default).addHandlerRender(showRecipe);
+    (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipe); //publisher subscriber pattern
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearch);
 };
 init();
 
-},{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./model.js":"Y4A21","./views/recipeView.js":"l60JC"}],"dkJzX":[function(require,module,exports) {
+},{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchView.js":"9OQAM"}],"dkJzX":[function(require,module,exports) {
 "use strict";
 var $ = require("../internals/export");
 var $includes = require("../internals/array-includes").includes;
@@ -2334,7 +2349,75 @@ try {
     else Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"gkKU3":[function(require,module,exports) {
+},{}],"Y4A21":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "state", ()=>state);
+parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+parcelHelpers.export(exports, "loadSearchResult", ()=>loadSearchResult);
+var _regeneratorRuntime = require("regenerator-runtime");
+var _configJs = require("./Config.js");
+var _helperJs = require("./views/helper.js");
+const state = {
+    recipe: {},
+    search: {
+        query: "",
+        result: []
+    }
+};
+const loadRecipe = async function(id) {
+    try {
+        const url = `${(0, _configJs.API_URL)}/${id}`; //ajax call
+        const data = await (0, _helperJs.getJSON)(url);
+        //console.log(res, data);//testing purpose
+        const { recipe  } = data.data;
+        //"state" is defined above
+        state.recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients
+        };
+        console.log(state.recipe);
+    } catch (err) {
+        console.log(`${err} main thread`);
+        throw err;
+    }
+};
+const loadSearchResult = async function(query) {
+    try {
+        state.search.query = query;
+        const url = `${(0, _configJs.API_URL)}/?search=${query}`;
+        const data = await (0, _helperJs.getJSON)(url);
+        console.log(data);
+        state.search.result = data.data.recipes.map((rec)=>{
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url
+            };
+        });
+    //console.log(state.search.result);
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+
+},{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "API_URL", ()=>API_URL);
+parcelHelpers.export(exports, "TIME_OUT_SEC", ()=>TIME_OUT_SEC);
+const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
+const TIME_OUT_SEC = 10;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -2364,50 +2447,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"Y4A21":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "state", ()=>state);
-parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
-var _regeneratorRuntime = require("regenerator-runtime");
-var _configJs = require("./Config.js");
-var _helperJs = require("./views/helper.js");
-const state = {
-    recipe: {}
-};
-const loadRecipe = async function(id) {
-    try {
-        const url = `${(0, _configJs.API_URL)}/${id}`; //ajax call
-        const data = await (0, _helperJs.getJSON)(url);
-        //console.log(res, data);//testing purpose
-        const { recipe  } = data.data;
-        //"state" is defined above
-        state.recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients
-        };
-        console.log(state.recipe);
-    } catch (err) {
-        console.log(`${err} main thread`);
-        throw err;
-    }
-};
-
-},{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Config.js":"3lOCA","./views/helper.js":"eA19p"}],"3lOCA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "API_URL", ()=>API_URL);
-parcelHelpers.export(exports, "TIME_OUT_SEC", ()=>TIME_OUT_SEC);
-const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
-const TIME_OUT_SEC = 10;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eA19p":[function(require,module,exports) {
+},{}],"eA19p":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getJSON", ()=>getJSON);
@@ -2581,44 +2621,7 @@ class RecipeView {
 }
 exports.default = new RecipeView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../../img/icons.svg":"loVOp","fractional":"3SU56"}],"loVOp":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"3SU56":[function(require,module,exports) {
+},{"fractional":"3SU56","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3SU56":[function(require,module,exports) {
 /*
 fraction.js
 A Javascript fraction library.
@@ -2871,6 +2874,65 @@ Fraction.primeFactors = function(n) {
 };
 module.exports.Fraction = Fraction;
 
-},{}]},["2kSJi","aenu9"], "aenu9", "parcelRequire3a11")
+},{}],"loVOp":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"9OQAM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class searchView {
+    #parentElement = document.querySelector(".search");
+    getQuery() {
+        const query = this.#parentElement.querySelector(".search__field").value;
+        this.clearInput();
+        return query;
+    }
+    addHandlerSearch(handler) {
+        this.#parentElement.addEventListener("submit", function(e) {
+            e.preventDefault(); // to prevent auto load/page load for first time
+            handler(); //load when event generated
+        });
+    }
+    clearInput() {
+        this.#parentElement.querySelector(".search__field").value = "";
+    }
+}
+exports.default = new searchView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2kSJi","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

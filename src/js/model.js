@@ -3,7 +3,11 @@ import { API_URL } from "./Config.js";
 import { getJSON } from "./views/helper.js";
 
 export const state = {
-    recipe: {}
+    recipe: {},
+    search: {
+        query: '',
+        result: [],
+    },
 };
 
 export const loadRecipe = async function (id) {
@@ -34,4 +38,31 @@ export const loadRecipe = async function (id) {
         throw err;
     }
 
-}
+};
+
+export const loadSearchResult = async function (query) {
+    try {
+        state.search.query = query;
+
+        const url = `${API_URL}/?search=${query}`;
+
+        const data = await getJSON(url);
+
+        console.log(data);
+
+        state.search.result = data.data.recipes.map(rec => {
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url,
+            };
+        });
+
+        //console.log(state.search.result);
+    }
+    catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
