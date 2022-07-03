@@ -44,6 +44,8 @@ const controlSearch = async function () {
     //1. GET
     const query = searchView.getQuery();
 
+    //console.log("query is", query);
+
     if (!query) {
       return;
     }
@@ -52,7 +54,7 @@ const controlSearch = async function () {
     await model.loadSearchResult(query);
 
     //3.Render
-    console.log(model);
+    console.log(model.state.search.result);
 
     resultsView.render(model.state.search.result);
   }

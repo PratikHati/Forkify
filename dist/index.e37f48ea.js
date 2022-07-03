@@ -538,11 +538,12 @@ const controlSearch = async function() {
         (0, _resultsViewJsDefault.default).spinnerRender();
         //1. GET
         const query = (0, _searchViewJsDefault.default).getQuery();
+        //console.log("query is", query);
         if (!query) return;
         //2.  Load
         await _modelJs.loadSearchResult(query);
         //3.Render
-        console.log(_modelJs);
+        console.log(_modelJs.state.search.result);
         (0, _resultsViewJsDefault.default).render(_modelJs.state.search.result);
     } catch (err) {
         console.error(err);
@@ -2574,7 +2575,18 @@ class RecipeView extends (0, _viewDefault.default) {
         `;
     }
     _generateMarkupIngrdient(ing) {
-        return;
+        return `
+          <li class="recipe__ingredient">
+            <svg class="recipe__icon">
+                <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
+                  </svg>
+                  <div class="recipe__quantity"> * ${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ""}</div>
+                  <div class="recipe__description">
+                    <span class="recipe__unit">${ing.unit}</span>
+                    ${ing.description}
+                  </div>
+          </li>
+        `;
     }
 }
 exports.default = new RecipeView();
@@ -2880,6 +2892,7 @@ class View {
     render(data) {
         this._data = data; //API data  
         const markup = this._generateMarkup();
+        //console.log("mark up is", markup);
         if (!markup) return markup;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup); //DOM insertion
@@ -2959,10 +2972,23 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class resultsView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".results");
     _generateMarkup() {
-        return this._data.map(this._generateHTML).join(""); //to display multiple objects
+        //console.log(this._data);
+        return this._data.map(this._generateHTMLMarkup).join(""); //to display multiple objects
     }
-    _generateHTML(result) {
-        return;
+    _generateHTMLMarkup(result) {
+        return `
+            <li class="preview">
+                <a class="preview__link" href="#${result.id}">
+                <figure class="preview__fig">
+                    <img src="${result.image}" alt="${result.title}" />
+                </figure>
+                <div class="preview__data">
+                    <h4 class="preview__title">${result.title}</h4>
+                    <p class="preview__publisher">${result.publisher}</p>
+                </div>
+                </a>
+            </li>
+        `;
     }
 }
 exports.default = new resultsView;

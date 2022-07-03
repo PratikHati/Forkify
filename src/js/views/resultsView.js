@@ -6,12 +6,13 @@ class resultsView extends View {
 
     _generateMarkup() {
 
-        return this._data.map(this._generateHTML).join(''); //to display multiple objects
+        //console.log(this._data);
+        return this._data.map(this._generateHTMLMarkup).join(''); //to display multiple objects
+
     }
 
-    _generateHTML(result) {
-        return
-        `
+    _generateHTMLMarkup(result) {
+        return `
             <li class="preview">
                 <a class="preview__link" href="#${result.id}">
                 <figure class="preview__fig">

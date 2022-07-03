@@ -2,29 +2,31 @@ import { Fraction } from 'fractional';
 import icons from 'url:../../img/icons.svg'; //parcel 2
 
 export default class View {
-    _data;
+  _data;
 
-    render(data) {
-        this._data = data;                          //API data  
-        const markup = this._generateMarkup();
+  render(data) {
+    this._data = data;                          //API data  
+    const markup = this._generateMarkup();
 
-        if (!markup) {
-            return markup;
-        }
+    //console.log("mark up is", markup);
 
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markup);   //DOM insertion
+    if (!markup) {
+      return markup;
     }
 
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);   //DOM insertion
+  }
 
 
-    _clear() {
-        this._parentElement.innerHTML = '';
-    }
+
+  _clear() {
+    this._parentElement.innerHTML = '';
+  }
 
 
-    spinnerRender() {
-        const markUp = `
+  spinnerRender() {
+    const markUp = `
           <div class="spinner">
             <svg>
               <use href="${icons}#icon-loader"></use>
@@ -32,15 +34,15 @@ export default class View {
           </div>
           `;
 
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-    };
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
+  };
 
 
 
 
-    renderError(message = this._errorMessage) {
-        const markUp = `
+  renderError(message = this._errorMessage) {
+    const markUp = `
       <div class="error">
       <div>
         <svg>
@@ -50,15 +52,15 @@ export default class View {
       <p>${message}</p>
     </div>`
 
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-    };
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
+  };
 
 
 
 
-    renderMessage(message = this._message) {
-        const markUp = `
+  renderMessage(message = this._message) {
+    const markUp = `
       <div class="message">
       <div>
         <svg>
@@ -68,8 +70,8 @@ export default class View {
       <p>${message}</p>
     </div>`
 
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-    };
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
+  };
 }
 
