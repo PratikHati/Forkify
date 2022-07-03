@@ -2,6 +2,7 @@ import { async } from "regenerator-runtime";
 import { API_URL } from "./Config.js";
 import { getJSON } from "./views/helper.js";
 
+//to store all the state of entire page in a single state
 export const state = {
     recipe: {},
     search: {
