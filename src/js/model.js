@@ -49,7 +49,7 @@ export const loadSearchResult = async function (query) {
 
         const data = await getJSON(url);
 
-        console.log(data);
+        //console.log(data);
 
         state.search.result = data.data.recipes.map(rec => {
             return {

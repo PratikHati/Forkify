@@ -514,18 +514,20 @@ var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
+if (module.hot) module.hot.accept();
 const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
         const id = window.location.hash.slice(1); //get id from query string
         //console.log(id);
         //if null pls return
-        if (id == null) return;
+        if (!id) return;
         //1.Loading recipe
         (0, _recipeViewJsDefault.default).spinnerRender();
         //call loadRecipe()
         await _modelJs.loadRecipe(id); //async method i.e "promise" will return 
         //const { recipe } = model.state;    //remove "recipe" if any error
+        console.log(_modelJs.state.recipe);
         //2.Rendering recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
     } catch (err) {
@@ -543,7 +545,6 @@ const controlSearch = async function() {
         //2.  Load
         await _modelJs.loadSearchResult(query);
         //3.Render
-        console.log(_modelJs.state.search.result);
         (0, _resultsViewJsDefault.default).render(_modelJs.state.search.result);
     } catch (err) {
         console.error(err);
@@ -2398,7 +2399,7 @@ const loadSearchResult = async function(query) {
         state.search.query = query;
         const url = `${(0, _configJs.API_URL)}/?search=${query}`;
         const data = await (0, _helperJs.getJSON)(url);
-        console.log(data);
+        //console.log(data);
         state.search.result = data.data.recipes.map((rec)=>{
             return {
                 id: rec.id,
@@ -2534,12 +2535,13 @@ class RecipeView extends (0, _viewDefault.default) {
                   </button>
                 </div>
               </div>
-    
+
               <div class="recipe__user-generated">
                 <svg>
-                  <use href="${0, _iconsSvgDefault.default}#icon-user"></use>
+                  <use href="src/img/icons.svg#icon-user"></use>
                 </svg>
               </div>
+  
               <button class="btn--round">
                 <svg class="">
                   <use href="${0, _iconsSvgDefault.default}#icon-bookmark-fill"></use>
@@ -2890,10 +2892,10 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
     render(data) {
+        if (!data || Array.isArray(data) && data.recipes.length === 0) return this.renderError();
         this._data = data; //API data  
         const markup = this._generateMarkup();
         //console.log("mark up is", markup);
-        if (!markup) return markup;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup); //DOM insertion
     }
@@ -2916,13 +2918,14 @@ class View {
       <div class="error">
       <div>
         <svg>
-          <use href="${(0, _iconsSvgDefault.default)}#  icon-alert-triangle"></use>
+          <use href="${(0, _iconsSvgDefault.default)}#icon-alert-triangle"></use>
         </svg>
       </div>
       <p>${message}</p>
     </div>`;
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markUp); //DOM
+    //return markUp;
     }
     renderMessage(message = this._message) {
         const markUp = `
@@ -2971,8 +2974,10 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class resultsView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".results");
+    _errorMessage = "Recipe not found for your search! Please try again";
+    _message = "";
     _generateMarkup() {
-        //console.log(this._data);
+        console.log(this._data);
         return this._data.map(this._generateHTMLMarkup).join(""); //to display multiple objects
     }
     _generateHTMLMarkup(result) {

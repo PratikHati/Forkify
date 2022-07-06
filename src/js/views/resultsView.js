@@ -3,12 +3,13 @@ import icons from 'url:../../img/icons.svg';
 
 class resultsView extends View {
     _parentElement = document.querySelector('.results');
+    _errorMessage = "Recipe not found for your search! Please try again";
+    _message = "";
 
     _generateMarkup() {
 
-        //console.log(this._data);
+        console.log(this._data);
         return this._data.map(this._generateHTMLMarkup).join(''); //to display multiple objects
-
     }
 
     _generateHTMLMarkup(result) {

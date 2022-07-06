@@ -5,6 +5,10 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 const controlRecipe = async function () {
 
   try {
@@ -14,7 +18,7 @@ const controlRecipe = async function () {
     //console.log(id);
 
     //if null pls return
-    if (id == null) {
+    if (!id) {
       return;
     }
 
@@ -25,6 +29,8 @@ const controlRecipe = async function () {
     await model.loadRecipe(id); //async method i.e "promise" will return 
 
     //const { recipe } = model.state;    //remove "recipe" if any error
+
+    console.log(model.state.recipe);
 
     //2.Rendering recipe
     recipeView.render(model.state.recipe);
@@ -54,15 +60,13 @@ const controlSearch = async function () {
     await model.loadSearchResult(query);
 
     //3.Render
-    console.log(model.state.search.result);
-
     resultsView.render(model.state.search.result);
   }
   catch (err) {
     console.error(err);
     throw err;
   }
-}
+};
 
 
 //first init() will run when page load
@@ -70,7 +74,7 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipe);  //publisher subscriber pattern
 
   searchView.addHandlerSearch(controlSearch);
-}
+};
 
 init();
 

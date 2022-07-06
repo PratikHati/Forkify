@@ -5,14 +5,17 @@ export default class View {
   _data;
 
   render(data) {
+
+
+    if (!data || (Array.isArray(data) && data.recipes.length === 0)) {
+      return this.renderError();
+    }
+
     this._data = data;                          //API data  
+
     const markup = this._generateMarkup();
 
     //console.log("mark up is", markup);
-
-    if (!markup) {
-      return markup;
-    }
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);   //DOM insertion
@@ -36,7 +39,7 @@ export default class View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-  };
+  }
 
 
 
@@ -46,15 +49,17 @@ export default class View {
       <div class="error">
       <div>
         <svg>
-          <use href="${icons}#  icon-alert-triangle"></use>
+          <use href="${icons}#icon-alert-triangle"></use>
         </svg>
       </div>
       <p>${message}</p>
-    </div>`
+    </div>`;
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-  };
+
+    //return markUp;
+  }
 
 
 
@@ -72,6 +77,6 @@ export default class View {
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markUp); //DOM
-  };
-}
+  }
+};
 
