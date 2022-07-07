@@ -7,7 +7,7 @@ export default class View {
   render(data) {
 
 
-    if (!data || (Array.isArray(data) && data.recipes.length === 0)) {
+    if (!data || (Array.isArray(data) && data.length === 0)) {
       return this.renderError();
     }
 

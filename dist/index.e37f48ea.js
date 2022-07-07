@@ -544,6 +544,7 @@ const controlSearch = async function() {
         if (!query) return;
         //2.  Load
         await _modelJs.loadSearchResult(query);
+        console.log(_modelJs);
         //3.Render
         (0, _resultsViewJsDefault.default).render(_modelJs.state.search.result);
     } catch (err) {
@@ -2388,7 +2389,7 @@ const loadRecipe = async function(id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        console.log(state.recipe);
+    //console.log(state.recipe);
     } catch (err) {
         console.log(`${err} main thread`);
         throw err;
@@ -2892,7 +2893,7 @@ var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class View {
     _data;
     render(data) {
-        if (!data || Array.isArray(data) && data.recipes.length === 0) return this.renderError();
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data; //API data  
         const markup = this._generateMarkup();
         //console.log("mark up is", markup);
@@ -2974,7 +2975,7 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class resultsView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".results");
-    _errorMessage = "Recipe not found for your search! Please try again";
+    _errorMessage = "Recipe not found for your search! Please try again:)";
     _message = "";
     _generateMarkup() {
         console.log(this._data);
