@@ -4,6 +4,7 @@ import * as model from "./model.js";
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
 
 if (module.hot) {
   module.hot.accept();
@@ -62,7 +63,13 @@ const controlSearch = async function () {
     console.log(model);
 
     //3.Render
-    resultsView.render(model.state.search.result);
+    //resultsView.render(model.state.search.result);
+
+    resultsView.render(model.getResultByPage(2));
+
+    //4.Pagination
+    paginationView.render(model.state.search);
+
   }
   catch (err) {
     console.error(err);

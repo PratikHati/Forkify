@@ -514,6 +514,8 @@ var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
+var _paginationViewJs = require("./views/paginationView.js");
+var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
 if (module.hot) module.hot.accept();
 const controlRecipe = async function() {
     try {
@@ -546,7 +548,10 @@ const controlSearch = async function() {
         await _modelJs.loadSearchResult(query);
         console.log(_modelJs);
         //3.Render
-        (0, _resultsViewJsDefault.default).render(_modelJs.state.search.result);
+        //resultsView.render(model.state.search.result);
+        (0, _resultsViewJsDefault.default).render(_modelJs.getResultByPage(2));
+        //4.Pagination
+        (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
         console.error(err);
         throw err;
@@ -559,7 +564,7 @@ const init = function() {
 };
 init();
 
-},{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE"}],"dkJzX":[function(require,module,exports) {
+},{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi"}],"dkJzX":[function(require,module,exports) {
 "use strict";
 var $ = require("../internals/export");
 var $includes = require("../internals/array-includes").includes;
@@ -2362,6 +2367,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 parcelHelpers.export(exports, "loadSearchResult", ()=>loadSearchResult);
+parcelHelpers.export(exports, "getResultByPage", ()=>getResultByPage);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./Config.js");
 var _helperJs = require("./views/helper.js");
@@ -2369,6 +2375,7 @@ const state = {
     recipe: {},
     search: {
         query: "",
+        page: 1,
         result: []
     }
 };
@@ -2414,6 +2421,12 @@ const loadSearchResult = async function(query) {
         console.error(err);
         throw err;
     }
+};
+const getResultByPage = function(page = state.search.page) {
+    state.search.page = page;
+    const start = (page - 1) * 10;
+    const end = page * 10;
+    return state.search.result.slice(start, end);
 };
 
 },{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
@@ -2999,6 +3012,58 @@ class resultsView extends (0, _viewJsDefault.default) {
 }
 exports.default = new resultsView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../../img/icons.svg":"loVOp","./View.js":"5cUXS"}]},["2kSJi","aenu9"], "aenu9", "parcelRequire3a11")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../../img/icons.svg":"loVOp","./View.js":"5cUXS"}],"6z7bi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewJs = require("./View.js");
+var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
+var _iconsSvg = require("url:../../img/icons.svg");
+var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+class paginationView extends (0, _viewJsDefault.default) {
+    _parentElement = document.querySelector(".pagination");
+    _generateMarkup() {
+        const currpage = this._data.page;
+        const pages = this._data.result.length / 10; //each page will have max 10 results
+        console.log(pages);
+        //first page and others 
+        if (currpage === 1 && pages > 1) return `
+            <button class="btn--inline pagination__btn--next">
+                <span>${currpage + 1}</span>
+                <svg class="search__icon">
+                    <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+                </svg>
+            </button>
+          `;
+        //last page
+        if (currpage === pages && pages > 1) return `
+            <button class="btn--inline pagination__btn--prev">
+                <svg class="search__icon">
+                    <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
+                </svg>
+                <span>${currpage - 1}</span>
+            </button>
+          `;
+        //other page
+        if (currpage < pages) return `
+            <button class="btn--inline pagination__btn--prev">
+                <svg class="search__icon">
+                    <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
+                </svg>
+                <span>${currpage - 1}</span>
+            </button>
+            <button class="btn--inline pagination__btn--next">
+                <span>${currpage + 1}</span>
+                <svg class="search__icon">
+                    <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
+                </svg>
+            </button>
+            `;
+        //only 1 page
+        return ``;
+    }
+}
+exports.default = new paginationView();
+
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2kSJi","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map
