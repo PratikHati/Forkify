@@ -142,7 +142,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"2kSJi":[function(require,module,exports) {
+})({"fA0o9":[function(require,module,exports) {
 "use strict";
 var global = arguments[3];
 var HMR_HOST = null;
@@ -150,7 +150,7 @@ var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "d113fd8ce37f48ea";
-/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, importScripts */ /*::
+/* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
   HMRMessage,
@@ -180,6 +180,8 @@ interface ParcelModule {
 interface ExtensionContext {
   runtime: {|
     reload(): void,
+    getURL(url: string): string;
+    getManifest(): {manifest_version: number, ...};
   |};
 }
 declare var module: {bundle: ParcelRequire, ...};
@@ -189,6 +191,10 @@ declare var HMR_ENV_HASH: string;
 declare var HMR_SECURE: boolean;
 declare var chrome: ExtensionContext;
 declare var browser: ExtensionContext;
+declare var __parcel__import__: (string) => Promise<void>;
+declare var __parcel__importScripts__: (string) => Promise<void>;
+declare var globalThis: typeof self;
+declare var ServiceWorkerGlobalScope: Object;
 */ var OVERLAY_ID = "__parcel__error__overlay__";
 var OldModule = module.bundle.Module;
 function Module(moduleName) {
@@ -219,7 +225,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var hostname = getHostname();
     var port = getPort();
     var protocol = HMR_SECURE || location.protocol == "https:" && !/localhost|127.0.0.1|0.0.0.0/.test(hostname) ? "wss" : "ws";
-    var ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/"); // Safari doesn't support sourceURL in error stacks.
+    var ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/"); // Web extension context
+    var extCtx = typeof chrome === "undefined" ? typeof browser === "undefined" ? null : browser : chrome; // Safari doesn't support sourceURL in error stacks.
     // eval may also be disabled via CSP, so do a quick check.
     var supportsSourceURL = false;
     try {
@@ -247,12 +254,7 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
                     var id = assetsToAccept[i][1];
                     if (!acceptedAssets[id]) hmrAcceptRun(assetsToAccept[i][0], id);
                 }
-            } else if ("reload" in location) location.reload();
-            else {
-                // Web extension context
-                var ext = typeof chrome === "undefined" ? typeof browser === "undefined" ? null : browser : chrome;
-                if (ext && ext.runtime && ext.runtime.reload) ext.runtime.reload();
-            }
+            } else fullReload();
         }
         if (data.type === "error") {
             // Log parcel errors to console
@@ -309,6 +311,10 @@ ${frame.code}`;
     overlay.innerHTML = errorHTML;
     return overlay;
 }
+function fullReload() {
+    if ("reload" in location) location.reload();
+    else if (extCtx && extCtx.runtime && extCtx.runtime.reload) extCtx.runtime.reload();
+}
 function getParents(bundle, id) /*: Array<[ParcelRequire, string]> */ {
     var modules = bundle.modules;
     if (!modules) return [];
@@ -349,6 +355,32 @@ function reloadCSS() {
         cssTimeout = null;
     }, 50);
 }
+function hmrDownload(asset) {
+    if (asset.type === "js") {
+        if (typeof document !== "undefined") {
+            let script = document.createElement("script");
+            script.src = asset.url + "?t=" + Date.now();
+            if (asset.outputFormat === "esmodule") script.type = "module";
+            return new Promise((resolve, reject)=>{
+                var _document$head;
+                script.onload = ()=>resolve(script);
+                script.onerror = reject;
+                (_document$head = document.head) === null || _document$head === void 0 || _document$head.appendChild(script);
+            });
+        } else if (typeof importScripts === "function") {
+            // Worker scripts
+            if (asset.outputFormat === "esmodule") return import(asset.url + "?t=" + Date.now());
+            else return new Promise((resolve, reject)=>{
+                try {
+                    importScripts(asset.url + "?t=" + Date.now());
+                    resolve();
+                } catch (err) {
+                    reject(err);
+                }
+            });
+        }
+    }
+}
 async function hmrApplyUpdates(assets) {
     global.parcelHotUpdate = Object.create(null);
     let scriptsToRemove;
@@ -361,24 +393,20 @@ async function hmrApplyUpdates(assets) {
         // This path is also taken if a CSP disallows eval.
         if (!supportsSourceURL) {
             let promises = assets.map((asset)=>{
-                if (asset.type === "js") {
-                    if (typeof document !== "undefined") {
-                        let script = document.createElement("script");
-                        script.src = asset.url;
-                        return new Promise((resolve, reject)=>{
-                            var _document$head;
-                            script.onload = ()=>resolve(script);
-                            script.onerror = reject;
-                            (_document$head = document.head) === null || _document$head === void 0 || _document$head.appendChild(script);
-                        });
-                    } else if (typeof importScripts === "function") return new Promise((resolve, reject)=>{
-                        try {
-                            importScripts(asset.url);
-                        } catch (err) {
-                            reject(err);
+                var _hmrDownload;
+                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((err)=>{
+                    // Web extension bugfix for Chromium
+                    // https://bugs.chromium.org/p/chromium/issues/detail?id=1255412#c12
+                    if (extCtx && extCtx.runtime && extCtx.runtime.getManifest().manifest_version == 3) {
+                        if (typeof ServiceWorkerGlobalScope != "undefined" && global instanceof ServiceWorkerGlobalScope) {
+                            extCtx.runtime.reload();
+                            return;
                         }
-                    });
-                }
+                        asset.url = extCtx.runtime.getURL("/__parcel_hmr_proxy__?url=" + encodeURIComponent(asset.url + "?t=" + Date.now()));
+                        return hmrDownload(asset);
+                    }
+                    throw err;
+                });
             });
             scriptsToRemove = await Promise.all(promises);
         }
@@ -415,6 +443,7 @@ function hmrApply(bundle, asset) {
             if (supportsSourceURL) // Global eval. We would use `new Function` here but browser
             // support for source maps is better with eval.
             (0, eval)(asset.output);
+             // $FlowFixMe
             let fn = global.parcelHotUpdate[asset.id];
             modules[asset.id] = [
                 fn,
@@ -504,7 +533,6 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"aenu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _esArrayIncludesJs = require("core-js/modules/es.array.includes.js");
 var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _runtime = require("regenerator-runtime/runtime");
 var _modelJs = require("./model.js");
@@ -549,46 +577,49 @@ const controlSearch = async function() {
         console.log(_modelJs);
         //3.Render
         //resultsView.render(model.state.search.result);
-        (0, _resultsViewJsDefault.default).render(_modelJs.getResultByPage(2));
-        //4.Pagination
+        (0, _resultsViewJsDefault.default).render(_modelJs.getResultByPage(1));
+        //4.Pagination 
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
         console.error(err);
         throw err;
     }
 };
+const controlPagination = async function(gotoValue) {
+    //1.Render 
+    (0, _resultsViewJsDefault.default).render(_modelJs.getResultByPage(gotoValue)); //variable 'page' gets updated in this line in model.js
+    //2.Pagination 
+    (0, _paginationViewJsDefault.default).render(_modelJs.state.search); //then as new page value is in model, view.js->render()->paginationView.js->_generateMarkup() has internal logic to render only that page
+};
 //first init() will run when page load
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipe); //publisher subscriber pattern
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearch);
+    (0, _paginationViewJsDefault.default).addHandlerRender(controlPagination);
 };
 init();
 
-},{"core-js/modules/es.array.includes.js":"dkJzX","core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi"}],"dkJzX":[function(require,module,exports) {
-"use strict";
-var $ = require("../internals/export");
-var $includes = require("../internals/array-includes").includes;
-var fails = require("../internals/fails");
-var addToUnscopables = require("../internals/add-to-unscopables");
-// FF99+ bug
-var BROKEN_ON_SPARSE = fails(function() {
-    return !Array(1).includes();
-});
-// `Array.prototype.includes` method
-// https://tc39.es/ecma262/#sec-array.prototype.includes
-$({
-    target: "Array",
-    proto: true,
-    forced: BROKEN_ON_SPARSE
-}, {
-    includes: function includes(el /* , fromIndex = 0 */ ) {
-        return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-    }
-});
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables("includes");
+},{"core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"49tUX":[function(require,module,exports) {
+// TODO: Remove this module from `core-js@4` since it's split to modules listed below
+require("../modules/web.clear-immediate");
+require("../modules/web.set-immediate");
 
-},{"../internals/export":"dIGt4","../internals/array-includes":"n5IsC","../internals/fails":"hL6D2","../internals/add-to-unscopables":"jx7ej"}],"dIGt4":[function(require,module,exports) {
+},{"../modules/web.clear-immediate":"fOGFr","../modules/web.set-immediate":"l7FDS"}],"fOGFr":[function(require,module,exports) {
+var $ = require("../internals/export");
+var global = require("../internals/global");
+var clearImmediate = require("../internals/task").clear;
+// `clearImmediate` method
+// http://w3c.github.io/setImmediate/#si-clearImmediate
+$({
+    global: true,
+    bind: true,
+    enumerable: true,
+    forced: global.clearImmediate !== clearImmediate
+}, {
+    clearImmediate: clearImmediate
+});
+
+},{"../internals/export":"dIGt4","../internals/global":"i8HOC","../internals/task":"7jDg7"}],"dIGt4":[function(require,module,exports) {
 var global = require("../internals/global");
 var getOwnPropertyDescriptor = require("../internals/object-get-own-property-descriptor").f;
 var createNonEnumerableProperty = require("../internals/create-non-enumerable-property");
@@ -979,10 +1010,10 @@ var store = require("../internals/shared-store");
 (module.exports = function(key, value) {
     return store[key] || (store[key] = value !== undefined ? value : {});
 })("versions", []).push({
-    version: "3.22.8",
+    version: "3.23.3",
     mode: IS_PURE ? "pure" : "global",
     copyright: "\xa9 2014-2022 Denis Pushkarev (zloirock.ru)",
-    license: "https://github.com/zloirock/core-js/blob/v3.22.8/LICENSE",
+    license: "https://github.com/zloirock/core-js/blob/v3.23.3/LICENSE",
     source: "https://github.com/zloirock/core-js"
 });
 
@@ -1146,7 +1177,7 @@ module.exports = function(argument) {
 
 },{"../internals/is-object":"Z0pBo"}],"6XwEX":[function(require,module,exports) {
 var isCallable = require("../internals/is-callable");
-var createNonEnumerableProperty = require("../internals/create-non-enumerable-property");
+var definePropertyModule = require("../internals/object-define-property");
 var makeBuiltIn = require("../internals/make-built-in");
 var defineGlobalProperty = require("../internals/define-global-property");
 module.exports = function(O, key, value, options) {
@@ -1158,15 +1189,22 @@ module.exports = function(O, key, value, options) {
         if (simple) O[key] = value;
         else defineGlobalProperty(key, value);
     } else {
-        if (!options.unsafe) delete O[key];
-        else if (O[key]) simple = true;
+        try {
+            if (!options.unsafe) delete O[key];
+            else if (O[key]) simple = true;
+        } catch (error) {}
         if (simple) O[key] = value;
-        else createNonEnumerableProperty(O, key, value);
+        else definePropertyModule.f(O, key, {
+            value: value,
+            enumerable: false,
+            configurable: !options.nonConfigurable,
+            writable: !options.nonWritable
+        });
     }
     return O;
 };
 
-},{"../internals/is-callable":"l3Kyn","../internals/create-non-enumerable-property":"8CL42","../internals/make-built-in":"cTB4k","../internals/define-global-property":"ggjnO"}],"cTB4k":[function(require,module,exports) {
+},{"../internals/is-callable":"l3Kyn","../internals/object-define-property":"iJR4w","../internals/make-built-in":"cTB4k","../internals/define-global-property":"ggjnO"}],"cTB4k":[function(require,module,exports) {
 var fails = require("../internals/fails");
 var isCallable = require("../internals/is-callable");
 var hasOwn = require("../internals/has-own-property");
@@ -1188,10 +1226,13 @@ var makeBuiltIn = module.exports = function(value, name, options) {
     if (String(name).slice(0, 7) === "Symbol(") name = "[" + String(name).replace(/^Symbol\(([^)]*)\)/, "$1") + "]";
     if (options && options.getter) name = "get " + name;
     if (options && options.setter) name = "set " + name;
-    if (!hasOwn(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) defineProperty(value, "name", {
-        value: name,
-        configurable: true
-    });
+    if (!hasOwn(value, "name") || CONFIGURABLE_FUNCTION_NAME && value.name !== name) {
+        if (DESCRIPTORS) defineProperty(value, "name", {
+            value: name,
+            configurable: true
+        });
+        else value.name = name;
+    }
     if (CONFIGURABLE_LENGTH && options && hasOwn(options, "arity") && value.length !== options.arity) defineProperty(value, "length", {
         value: options.arity
     });
@@ -1496,152 +1537,7 @@ var NATIVE = isForced.NATIVE = "N";
 var POLYFILL = isForced.POLYFILL = "P";
 module.exports = isForced;
 
-},{"../internals/fails":"hL6D2","../internals/is-callable":"l3Kyn"}],"jx7ej":[function(require,module,exports) {
-var wellKnownSymbol = require("../internals/well-known-symbol");
-var create = require("../internals/object-create");
-var defineProperty = require("../internals/object-define-property").f;
-var UNSCOPABLES = wellKnownSymbol("unscopables");
-var ArrayPrototype = Array.prototype;
-// Array.prototype[@@unscopables]
-// https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
-if (ArrayPrototype[UNSCOPABLES] == undefined) defineProperty(ArrayPrototype, UNSCOPABLES, {
-    configurable: true,
-    value: create(null)
-});
-// add a key to Array.prototype[@@unscopables]
-module.exports = function(key) {
-    ArrayPrototype[UNSCOPABLES][key] = true;
-};
-
-},{"../internals/well-known-symbol":"gTwyA","../internals/object-create":"duSQE","../internals/object-define-property":"iJR4w"}],"duSQE":[function(require,module,exports) {
-/* global ActiveXObject -- old IE, WSH */ var anObject = require("../internals/an-object");
-var definePropertiesModule = require("../internals/object-define-properties");
-var enumBugKeys = require("../internals/enum-bug-keys");
-var hiddenKeys = require("../internals/hidden-keys");
-var html = require("../internals/html");
-var documentCreateElement = require("../internals/document-create-element");
-var sharedKey = require("../internals/shared-key");
-var GT = ">";
-var LT = "<";
-var PROTOTYPE = "prototype";
-var SCRIPT = "script";
-var IE_PROTO = sharedKey("IE_PROTO");
-var EmptyConstructor = function() {};
-var scriptTag = function(content) {
-    return LT + SCRIPT + GT + content + LT + "/" + SCRIPT + GT;
-};
-// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
-var NullProtoObjectViaActiveX = function(activeXDocument1) {
-    activeXDocument1.write(scriptTag(""));
-    activeXDocument1.close();
-    var temp = activeXDocument1.parentWindow.Object;
-    activeXDocument1 = null; // avoid memory leak
-    return temp;
-};
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var NullProtoObjectViaIFrame = function() {
-    // Thrash, waste and sodomy: IE GC bug
-    var iframe = documentCreateElement("iframe");
-    var JS = "java" + SCRIPT + ":";
-    var iframeDocument;
-    iframe.style.display = "none";
-    html.appendChild(iframe);
-    // https://github.com/zloirock/core-js/issues/475
-    iframe.src = String(JS);
-    iframeDocument = iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(scriptTag("document.F=Object"));
-    iframeDocument.close();
-    return iframeDocument.F;
-};
-// Check for document.domain and active x support
-// No need to use active x approach when document.domain is not set
-// see https://github.com/es-shims/es5-shim/issues/150
-// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
-// avoid IE GC bug
-var activeXDocument;
-var NullProtoObject = function() {
-    try {
-        activeXDocument = new ActiveXObject("htmlfile");
-    } catch (error) {}
-    NullProtoObject = typeof document != "undefined" ? document.domain && activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-     : NullProtoObjectViaIFrame() : NullProtoObjectViaActiveX(activeXDocument); // WSH
-    var length = enumBugKeys.length;
-    while(length--)delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
-    return NullProtoObject();
-};
-hiddenKeys[IE_PROTO] = true;
-// `Object.create` method
-// https://tc39.es/ecma262/#sec-object.create
-// eslint-disable-next-line es-x/no-object-create -- safe
-module.exports = Object.create || function create(O, Properties) {
-    var result;
-    if (O !== null) {
-        EmptyConstructor[PROTOTYPE] = anObject(O);
-        result = new EmptyConstructor();
-        EmptyConstructor[PROTOTYPE] = null;
-        // add "__proto__" for Object.getPrototypeOf polyfill
-        result[IE_PROTO] = O;
-    } else result = NullProtoObject();
-    return Properties === undefined ? result : definePropertiesModule.f(result, Properties);
-};
-
-},{"../internals/an-object":"4isCr","../internals/object-define-properties":"duA6W","../internals/enum-bug-keys":"9RnJm","../internals/hidden-keys":"661m4","../internals/html":"2pze4","../internals/document-create-element":"4bOHl","../internals/shared-key":"eAjGz"}],"duA6W":[function(require,module,exports) {
-var DESCRIPTORS = require("../internals/descriptors");
-var V8_PROTOTYPE_DEFINE_BUG = require("../internals/v8-prototype-define-bug");
-var definePropertyModule = require("../internals/object-define-property");
-var anObject = require("../internals/an-object");
-var toIndexedObject = require("../internals/to-indexed-object");
-var objectKeys = require("../internals/object-keys");
-// `Object.defineProperties` method
-// https://tc39.es/ecma262/#sec-object.defineproperties
-// eslint-disable-next-line es-x/no-object-defineproperties -- safe
-exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : function defineProperties(O, Properties) {
-    anObject(O);
-    var props = toIndexedObject(Properties);
-    var keys = objectKeys(Properties);
-    var length = keys.length;
-    var index = 0;
-    var key;
-    while(length > index)definePropertyModule.f(O, key = keys[index++], props[key]);
-    return O;
-};
-
-},{"../internals/descriptors":"92ZIi","../internals/v8-prototype-define-bug":"ka1Un","../internals/object-define-property":"iJR4w","../internals/an-object":"4isCr","../internals/to-indexed-object":"jLWwQ","../internals/object-keys":"kzBf4"}],"kzBf4":[function(require,module,exports) {
-var internalObjectKeys = require("../internals/object-keys-internal");
-var enumBugKeys = require("../internals/enum-bug-keys");
-// `Object.keys` method
-// https://tc39.es/ecma262/#sec-object.keys
-// eslint-disable-next-line es-x/no-object-keys -- safe
-module.exports = Object.keys || function keys(O) {
-    return internalObjectKeys(O, enumBugKeys);
-};
-
-},{"../internals/object-keys-internal":"hl5T1","../internals/enum-bug-keys":"9RnJm"}],"2pze4":[function(require,module,exports) {
-var getBuiltIn = require("../internals/get-built-in");
-module.exports = getBuiltIn("document", "documentElement");
-
-},{"../internals/get-built-in":"6ZUSY"}],"49tUX":[function(require,module,exports) {
-// TODO: Remove this module from `core-js@4` since it's split to modules listed below
-require("../modules/web.clear-immediate");
-require("../modules/web.set-immediate");
-
-},{"../modules/web.clear-immediate":"fOGFr","../modules/web.set-immediate":"l7FDS"}],"fOGFr":[function(require,module,exports) {
-var $ = require("../internals/export");
-var global = require("../internals/global");
-var clearImmediate = require("../internals/task").clear;
-// `clearImmediate` method
-// http://w3c.github.io/setImmediate/#si-clearImmediate
-$({
-    global: true,
-    bind: true,
-    enumerable: true,
-    forced: global.clearImmediate !== clearImmediate
-}, {
-    clearImmediate: clearImmediate
-});
-
-},{"../internals/export":"dIGt4","../internals/global":"i8HOC","../internals/task":"7jDg7"}],"7jDg7":[function(require,module,exports) {
+},{"../internals/fails":"hL6D2","../internals/is-callable":"l3Kyn"}],"7jDg7":[function(require,module,exports) {
 var global = require("../internals/global");
 var apply = require("../internals/function-apply");
 var bind = require("../internals/function-bind-context");
@@ -1759,7 +1655,11 @@ module.exports = function(fn, that) {
     };
 };
 
-},{"../internals/function-uncurry-this":"7GlkT","../internals/a-callable":"gOMir","../internals/function-bind-native":"i16Dq"}],"RsFXo":[function(require,module,exports) {
+},{"../internals/function-uncurry-this":"7GlkT","../internals/a-callable":"gOMir","../internals/function-bind-native":"i16Dq"}],"2pze4":[function(require,module,exports) {
+var getBuiltIn = require("../internals/get-built-in");
+module.exports = getBuiltIn("document", "documentElement");
+
+},{"../internals/get-built-in":"6ZUSY"}],"RsFXo":[function(require,module,exports) {
 var uncurryThis = require("../internals/function-uncurry-this");
 module.exports = uncurryThis([].slice);
 
@@ -2607,7 +2507,7 @@ class RecipeView extends (0, _viewDefault.default) {
 }
 exports.default = new RecipeView();
 
-},{"fractional":"3SU56","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./View":"5cUXS"}],"3SU56":[function(require,module,exports) {
+},{"fractional":"3SU56","url:../../img/icons.svg":"loVOp","./View":"5cUXS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3SU56":[function(require,module,exports) {
 /*
 fraction.js
 A Javascript fraction library.
@@ -2878,7 +2778,7 @@ function getBundleURL() {
     try {
         throw new Error();
     } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^)\n]+/g);
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
         if (matches) // The first two stack frames will be this function and getBundleURLCached.
         // Use the 3rd one, which will be a runtime in the original bundle.
         return getBaseURL(matches[2]);
@@ -2886,10 +2786,10 @@ function getBundleURL() {
     return "/";
 }
 function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
 } // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
 function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz)-extension):\/\/[^/]+/);
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
     if (!matches) throw new Error("Origin not found");
     return matches[0];
 }
@@ -2957,7 +2857,7 @@ class View {
 }
 exports.default = View;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractional":"3SU56","url:../../img/icons.svg":"loVOp"}],"9OQAM":[function(require,module,exports) {
+},{"fractional":"3SU56","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9OQAM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class searchView {
@@ -3012,7 +2912,7 @@ class resultsView extends (0, _viewJsDefault.default) {
 }
 exports.default = new resultsView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","url:../../img/icons.svg":"loVOp","./View.js":"5cUXS"}],"6z7bi":[function(require,module,exports) {
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6z7bi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _viewJs = require("./View.js");
@@ -3021,13 +2921,23 @@ var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
 class paginationView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".pagination");
+    //event listener for pages
+    addHandlerRender(handler) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--inline");
+            console.log(btn);
+            if (!btn) return;
+            const gotovalue = +btn.dataset.goto; //retrive vaule from front end "data-goto", ".dataset" remember, "+" used to convert string to integer
+            handler(gotovalue);
+        });
+    }
     _generateMarkup() {
         const currpage = this._data.page;
-        const pages = this._data.result.length / 10; //each page will have max 10 results
+        const pages = Math.ceil(this._data.result.length / 10); //each page will have max 10 results
         console.log(pages);
         //first page and others 
         if (currpage === 1 && pages > 1) return `
-            <button class="btn--inline pagination__btn--next">
+            <button data-goto ="${currpage + 1}"  class="btn--inline pagination__btn--next">
                 <span>${currpage + 1}</span>
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
@@ -3036,7 +2946,7 @@ class paginationView extends (0, _viewJsDefault.default) {
           `;
         //last page
         if (currpage === pages && pages > 1) return `
-            <button class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
                 </svg>
@@ -3045,13 +2955,14 @@ class paginationView extends (0, _viewJsDefault.default) {
           `;
         //other page
         if (currpage < pages) return `
-            <button class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
                 </svg>
                 <span>${currpage - 1}</span>
             </button>
-            <button class="btn--inline pagination__btn--next">
+
+            <button data-goto ="${currpag + 1}" class="btn--inline pagination__btn--next">
                 <span>${currpage + 1}</span>
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
@@ -3064,6 +2975,6 @@ class paginationView extends (0, _viewJsDefault.default) {
 }
 exports.default = new paginationView();
 
-},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["2kSJi","aenu9"], "aenu9", "parcelRequire3a11")
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

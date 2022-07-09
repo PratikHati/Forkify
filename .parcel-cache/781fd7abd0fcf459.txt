@@ -35,7 +35,7 @@
 57D:\GitHub\Forky-Dine\Forkify\forkify-flowchart-part-1.png132886955210000000 0
 59D:\GitHub\Forky-Dine\Forkify\node_modules\readdirp\index.js132994185308166895 0
 60D:\GitHub\Forky-Dine\Forkify\node_modules\anymatch\README.md132994185309266179 0
-33D:\GitHub\Forky-Dine\Forkify\dist133017721292059458 1
+33D:\GitHub\Forky-Dine\Forkify\dist133018343110695146 1
 66D:\GitHub\Forky-Dine\Forkify\node_modules\abortcontroller-polyfill132994179827030444 1
 60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\logger\src132994182046798528 1
 127D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-package-redirect-up132994182056427149 1
@@ -103,7 +103,7 @@
 76D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\composite-key.js132995213610882908 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\htmlnano\lib\modules\removeRedundantAttributes.js132994182008873778 0
 58D:\GitHub\Forky-Dine\Forkify\node_modules\msgpackr-extract132994182004963991 1
-49D:\GitHub\Forky-Dine\Forkify\src\js\controller.js133017721290052124 0
+49D:\GitHub\Forky-Dine\Forkify\src\js\controller.js133018343108617689 0
 86D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-snappoints.js132994179969229043 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\string\virtual\pad-end.js132995213656838009 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\css-select\lib\pseudo-selectors132994179873871837 1
@@ -220,7 +220,7 @@
 67D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lz4\lib132994182012244050 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\number\is-finite.js132995213647057228 0
 79D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeEmptyContainers.js132994179901860211 0
-59D:\GitHub\Forky-Dine\Forkify\src\js\views\paginationView.js133017720739095043 0
+59D:\GitHub\Forky-Dine\Forkify\src\js\views\paginationView.js133018351361982611 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\weak-set\add-all.js132995213600523620 0
 56D:\GitHub\Forky-Dine\Forkify\src\js\views\resultsView.js133016632024863499 0
 89D:\GitHub\Forky-Dine\Forkify\node_modules\csso\lib\restructure\prepare\processSelector.js132994179876062011 0
@@ -3481,7 +3481,7 @@
 76D:\GitHub\Forky-Dine\Forkify\node_modules\cosmiconfig\dist\ExplorerSync.d.ts132994179872971756 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\date\to-primitive.js132995213671546768 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\promise\any.js132995213601223658 0
-52D:\GitHub\Forky-Dine\Forkify\dist\icons.dfd7a6db.svg133017709564432207 0
+52D:\GitHub\Forky-Dine\Forkify\dist\icons.dfd7a6db.svg133017906742627551 0
 86D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_iterable_to_array_limit.js132994182025638648 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\typed-array\of.js132995213656247968 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\regions\US.js132994180040714665 0
@@ -6164,7 +6164,7 @@
 70D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\README.md132994179708594605 0
 92D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\high-resolution-time.js132994179985976306 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\dist\trace-event.d.ts132994179726439095 0
-56D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css.map133017709564462229 0
+56D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css.map133017906742627551 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\dist\trace-event.js132994179658692117 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\trace-mapping\dist\types132994179828690567 1
 86D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\hash\parcel-hash.linux-x64-musl.node132994182061266692 0
@@ -6583,7 +6583,7 @@
 91D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-file-multiple.js132994179996244061 0
 87D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-minlength.js132994179996384039 0
 83D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-range.js132994179996746001 0
-55D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js.map133017721292049455 0
+55D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js.map133018343110585120 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-search.js132994179996824168 0
 52D:\GitHub\Forky-Dine\Forkify\node_modules\braces\lib132994185310756588 1
 90D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\insertadjacenthtml.js132994180000213485 0
@@ -7401,7 +7401,7 @@
 84D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests\TargetRequest.js132994182058967364 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests\ValidationRequest.js132994182060056596 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\Bundle.js132994182054536991 0
-51D:\GitHub\Forky-Dine\Forkify\dist\logo.726d37a8.png133017709564352215 0
+51D:\GitHub\Forky-Dine\Forkify\dist\logo.726d37a8.png133017906742627551 0
 55D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo.ps1132994180094715461 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\BundleGraph.js132994182054837012 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\BundleGroup.js132994182055087035 0
@@ -7550,9 +7550,9 @@
 51D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo132994180094715461 0
 55D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo.cmd132994180094715461 0
 57D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\terser.cmd132994180094745489 0
-54D:\GitHub\Forky-Dine\Forkify\dist\favicon.8b2f57bf.png133017709564682310 0
-52D:\GitHub\Forky-Dine\Forkify\dist\icons.21bad73c.svg133017709564712318 0
+54D:\GitHub\Forky-Dine\Forkify\dist\favicon.8b2f57bf.png133017906742837541 0
+52D:\GitHub\Forky-Dine\Forkify\dist\icons.21bad73c.svg133017906742897562 0
 55D:\GitHub\Forky-Dine\Forkify\dist\index.62406edb.js.map132995158682955521 0
-51D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js133017721292029446 0
-52D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css133017709564462229 0
-44D:\GitHub\Forky-Dine\Forkify\dist\index.html133017709564432207 0
+51D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js133018343110555143 0
+52D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css133017908091516294 0
+44D:\GitHub\Forky-Dine\Forkify\dist\index.html133017906742627551 0

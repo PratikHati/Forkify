@@ -65,9 +65,9 @@ const controlSearch = async function () {
     //3.Render
     //resultsView.render(model.state.search.result);
 
-    resultsView.render(model.getResultByPage(2));
+    resultsView.render(model.getResultByPage(1));
 
-    //4.Pagination
+    //4.Pagination 
     paginationView.render(model.state.search);
 
   }
@@ -77,12 +77,22 @@ const controlSearch = async function () {
   }
 };
 
+const controlPagination = async function (gotoValue) {
+
+  //1.Render 
+  resultsView.render(model.getResultByPage(gotoValue));   //variable 'page' gets updated in this line in model.js
+
+  //2.Pagination 
+  paginationView.render(model.state.search);    //then as new page value is in model, view.js->render()->paginationView.js->_generateMarkup() has internal logic to render only that page
+};
 
 //first init() will run when page load
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);  //publisher subscriber pattern
 
   searchView.addHandlerSearch(controlSearch);
+
+  paginationView.addHandlerRender(controlPagination);
 };
 
 init();
