@@ -2334,8 +2334,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIME_OUT_SEC", ()=>TIME_OUT_SEC);
+parcelHelpers.export(exports, "COUNT_PER_PAGE", ()=>COUNT_PER_PAGE);
 const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
 const TIME_OUT_SEC = 10;
+const COUNT_PER_PAGE = 10;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -2919,6 +2921,7 @@ var _viewJs = require("./View.js");
 var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
 var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+var _configJs = require("../Config.js");
 class paginationView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".pagination");
     //event listener for pages
@@ -2933,7 +2936,7 @@ class paginationView extends (0, _viewJsDefault.default) {
     }
     _generateMarkup() {
         const currpage = this._data.page;
-        const pages = Math.ceil(this._data.result.length / 10); //each page will have max 10 results
+        const pages = Math.ceil(this._data.result.length / (0, _configJs.COUNT_PER_PAGE)); //each page will have max 10 results
         console.log(pages);
         //first page and others 
         if (currpage === 1 && pages > 1) return `
@@ -2946,7 +2949,7 @@ class paginationView extends (0, _viewJsDefault.default) {
           `;
         //last page
         if (currpage === pages && pages > 1) return `
-            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpage - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
                 </svg>
@@ -2955,14 +2958,14 @@ class paginationView extends (0, _viewJsDefault.default) {
           `;
         //other page
         if (currpage < pages) return `
-            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpage - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-left"></use>
                 </svg>
                 <span>${currpage - 1}</span>
             </button>
 
-            <button data-goto ="${currpag + 1}" class="btn--inline pagination__btn--next">
+            <button data-goto ="${currpage + 1}" class="btn--inline pagination__btn--next">
                 <span>${currpage + 1}</span>
                 <svg class="search__icon">
                     <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
@@ -2975,6 +2978,6 @@ class paginationView extends (0, _viewJsDefault.default) {
 }
 exports.default = new paginationView();
 
-},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["fA0o9","aenu9"], "aenu9", "parcelRequire3a11")
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../Config.js":"3lOCA"}]},["fA0o9","aenu9"], "aenu9", "parcelRequire3a11")
 
 //# sourceMappingURL=index.e37f48ea.js.map

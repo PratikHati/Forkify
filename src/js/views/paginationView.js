@@ -1,5 +1,6 @@
 import View from "./View.js";
 import icons from 'url:../../img/icons.svg';
+import { COUNT_PER_PAGE } from "../Config.js";
 
 class paginationView extends View {
     _parentElement = document.querySelector('.pagination');
@@ -22,7 +23,7 @@ class paginationView extends View {
 
     _generateMarkup() {
         const currpage = this._data.page;
-        const pages = Math.ceil(this._data.result.length / 10);     //each page will have max 10 results
+        const pages = Math.ceil(this._data.result.length / COUNT_PER_PAGE);     //each page will have max 10 results
         console.log(pages);
 
         //first page and others 
@@ -40,7 +41,7 @@ class paginationView extends View {
         //last page
         if (currpage === pages && pages > 1) {
             return `
-            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpage - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${icons}#icon-arrow-left"></use>
                 </svg>
@@ -52,14 +53,14 @@ class paginationView extends View {
         //other page
         if (currpage < pages) {
             return `
-            <button data-goto ="${currpag - 1}" class="btn--inline pagination__btn--prev">
+            <button data-goto ="${currpage - 1}" class="btn--inline pagination__btn--prev">
                 <svg class="search__icon">
                     <use href="${icons}#icon-arrow-left"></use>
                 </svg>
                 <span>${currpage - 1}</span>
             </button>
 
-            <button data-goto ="${currpag + 1}" class="btn--inline pagination__btn--next">
+            <button data-goto ="${currpage + 1}" class="btn--inline pagination__btn--next">
                 <span>${currpage + 1}</span>
                 <svg class="search__icon">
                     <use href="${icons}#icon-arrow-right"></use>

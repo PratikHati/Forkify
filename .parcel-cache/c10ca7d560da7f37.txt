@@ -34,7 +34,7 @@
 71D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeViewBox.js132994179911602014 0
 59D:\GitHub\Forky-Dine\Forkify\node_modules\readdirp\index.js132994185308166895 0
 60D:\GitHub\Forky-Dine\Forkify\node_modules\anymatch\README.md132994185309266179 0
-33D:\GitHub\Forky-Dine\Forkify\dist133018376836391417 1
+33D:\GitHub\Forky-Dine\Forkify\dist133018402444252306 1
 66D:\GitHub\Forky-Dine\Forkify\node_modules\abortcontroller-polyfill132994179827030444 1
 60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\logger\src133018354526002123 1
 127D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\side-effects-package-redirect-up133018354606812287 1
@@ -79,7 +79,7 @@
 38D:\GitHub\Forky-Dine\Forkify\README.md133003605659441647 0
 48D:\GitHub\Forky-Dine\Forkify\node_modules\@lezer132994181999513558 1
 66D:\GitHub\Forky-Dine\Forkify\node_modules\postcss-value-parser\lib132994179767440182 1
-98D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-missing133018354632772365 1
+98D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-missing133018354632782365 1
 52D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\fs133018354558494072 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\type-fest\ts41\delimiter-case.d.ts132994179803488240 0
 32D:\GitHub\Forky-Dine\Forkify\src132993540784518881 1
@@ -194,7 +194,7 @@
 72D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeComments.js132994179877652131 0
 81D:\GitHub\Forky-Dine\Forkify\node_modules\terser\node_modules\commander\Readme.md132994179715855068 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\intl-pluralrules.js133018354633825239 0
-48D:\GitHub\Forky-Dine\Forkify\node_modules\@babel133018354783953317 1
+48D:\GitHub\Forky-Dine\Forkify\node_modules\@babel133018354784763397 1
 82D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\string\virtual\match-all.js133018354693879475 0
 70D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\map\group-by.js133018354675840420 0
 87D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\highlight\node_modules\chalk\readme.md132994179712854970 0
@@ -228,7 +228,7 @@
 67D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lz4\lib133018354596020687 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\number\is-finite.js133018354685947927 0
 79D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeEmptyContainers.js132994179901860211 0
-59D:\GitHub\Forky-Dine\Forkify\src\js\views\paginationView.js133018376831449397 0
+59D:\GitHub\Forky-Dine\Forkify\src\js\views\paginationView.js133018402439351391 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\weak-set\add-all.js133018354483615225 0
 56D:\GitHub\Forky-Dine\Forkify\src\js\views\resultsView.js133016632024863499 0
 89D:\GitHub\Forky-Dine\Forkify\node_modules\csso\lib\restructure\prepare\processSelector.js132994179876062011 0
@@ -544,7 +544,7 @@
 79D:\GitHub\Forky-Dine\Forkify\node_modules\type-fest\source\merge-exclusive.d.ts132994179862890926 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.string.link.js133018354635675394 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\function\name.js133018354701100241 0
-91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-source-missing133018354632742360 1
+91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-source-missing133018354632752377 1
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\string\pad-end.js133018354706090611 0
 52D:\GitHub\Forky-Dine\Forkify\node_modules\is-extglob132994185308326919 1
 57D:\GitHub\Forky-Dine\Forkify\node_modules\xxhash-wasm\umd132994179768617617 1
@@ -863,7 +863,7 @@
 73D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\regions\NI.js133018354648536343 0
 67D:\GitHub\Forky-Dine\Forkify\node_modules\terser\dist\bundle.min.js132994179865981193 0
 87D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\string\virtual\trim-right.js133018354728370425 0
-96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\foo-2.0133018354523031891 1
+96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\foo-2.0133018354542647383 1
 70D:\GitHub\Forky-Dine\Forkify\node_modules\css-select\lib\attributes.js132994179694965425 0
 56D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\schema.js132994179873951855 0
 68D:\GitHub\Forky-Dine\Forkify\node_modules\sass\types\value\list.d.ts133018354488155571 0
@@ -897,7 +897,7 @@
 71D:\GitHub\Forky-Dine\Forkify\node_modules\msgpackr-extract\package.json132994182004893990 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\browser\dist\warnings-df54cb69.js132994179903702639 0
 77D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\error\constructor.js133018354598199731 0
-68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\compressor-raw\src133018354540175665 1
+68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\compressor-raw\src133018354541847325 1
 81D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\function\virtual\bind.js133018354516230739 0
 55D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\util.mjs132994179907145200 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\instance\last-index-of.js133018354689819147 0
@@ -949,7 +949,7 @@
 74D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\dist\PlainValue-ec8e588e.js132994179868061360 0
 70D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\symbol\replace.js133018354712879276 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\dist\resolveSeq-d03cb037.js132994179870411571 0
-93D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-extends-not-found133018354547361475 1
+93D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-extends-not-found133018354548646985 1
 70D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\dist\Schema-88e323a7.js132994179872051690 0
 60D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\dist\types.js132994179880172342 0
 89D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\esnext.array.group-by-to-map.js133018354644506027 0
@@ -990,7 +990,7 @@
 64D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\browser\schema.js132994179873431795 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\set-species.js133018354714579403 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\utility-types\dist\index.js.map132994179799657942 0
-90D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\common-targets-ignore133018354632512363 1
+90D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\common-targets-ignore133018354632522353 1
 61D:\GitHub\Forky-Dine\Forkify\node_modules\yaml\browser\seq.js132994179874491877 0
 59D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\proposals133018354734920949 1
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\array-slice.js133018354489055632 0
@@ -1415,7 +1415,7 @@
 81D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_non_iterable_rest.mjs133018354594770574 0
 81D:\GitHub\Forky-Dine\Forkify\node_modules\css-tree\lib\common\OffsetToLocation.js132994179926410552 0
 56D:\GitHub\Forky-Dine\Forkify\node_modules\terser\LICENSE132994179680569617 0
-67D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\set-array\src133018354549267028 1
+67D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\set-array\src133018354549357040 1
 61D:\GitHub\Forky-Dine\Forkify\node_modules\terser\node_modules132994179598922249 1
 81D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\is-integral-number.js133018354686167939 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeUnusedNS.js132994179910991964 0
@@ -1623,7 +1623,7 @@
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\reporter-cli\src\render.js133018354507232886 0
 61D:\GitHub\Forky-Dine\Forkify\node_modules\buffer-from\LICENSE132994179653071086 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\svgo\plugins\removeEmptyText.js132994179902860324 0
-103D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\has-a-not-yet-installed133018354536215521 1
+103D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\has-a-not-yet-installed133018354536705513 1
 100D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\runtime-service-worker\lib\ServiceWorkerRuntime.js133018354507092870 0
 60D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\web\url.js133018354732470728 0
 77D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\source-map\package.json132994179702756052 0
@@ -1731,7 +1731,7 @@
 68D:\GitHub\Forky-Dine\Forkify\node_modules\nth-check\lib\compile.d.ts132994179863810997 0
 62D:\GitHub\Forky-Dine\Forkify\node_modules\json5\lib\index.d.ts132994182006517114 0
 76D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\symbol\matcher.js133018354697479738 0
-119D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-no-engines133018354599549842 1
+119D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-no-engines133018354633124996 1
 59D:\GitHub\Forky-Dine\Forkify\node_modules\@trysound\sax\lib132994179668585671 1
 73D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\regions\IQ.js133018354633915255 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lz4\lib\dll\liblz4.def133018354557280308 0
@@ -2441,7 +2441,7 @@
 56D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\native.js133018354586610417 0
 76D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lz4\lib\xxhash.h133018354585480335 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\lib\requests\AssetGraphRequest.js133018354562796755 0
-143D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\.pnpm\source-pnpm@1.0.0\node_modules\source-pnpm133018354593253506 1
+143D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\node-resolver-core\test\fixture\node_modules\.pnpm\source-pnpm@1.0.0\node_modules\source-pnpm133018354598139729 1
 79D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.string.includes.js133018354635165351 0
 60D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\node-index.js133018354586710434 0
 54D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\open.js133018354586940458 0
@@ -2518,7 +2518,7 @@
 77D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\regions\alt-sa.js133018354485985408 0
 85D:\GitHub\Forky-Dine\Forkify\node_modules\csso\lib\restructure\prepare\specificity.js132994179877402125 0
 94D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\node_modules\node-addon-api\tools\conversion.js132994182053206924 0
-96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-one133018354633144991 1
+96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-one133018354633155005 1
 65D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dist\index.cjs.map133018354594930572 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\microtask.js133018354700779976 0
 61D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dict\dict2.txt133018354600159902 0
@@ -2606,7 +2606,7 @@
 63D:\GitHub\Forky-Dine\Forkify\node_modules\css-tree\package.json132994179934497086 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest2.c133018354531695085 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest3.c133018354532245133 0
-91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-targets-distdir133018354632662359 1
+91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-targets-distdir133018354632672368 1
 91D:\GitHub\Forky-Dine\Forkify\node_modules\lmdb\dependencies\lmdb\libraries\liblmdb\mtest4.c133018354533785246 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\domutils\lib\stringify.d.ts.map132994179827440474 0
 71D:\GitHub\Forky-Dine\Forkify\node_modules\css-tree\lib\lexer\generic.js132994179909971752 0
@@ -2703,7 +2703,7 @@
 71D:\GitHub\Forky-Dine\Forkify\node_modules\css-select\lib\index.d.ts.map132994179855670348 0
 93D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\runtime-js\src\helpers\browser\js-loader.js133018354526502158 0
 58D:\GitHub\Forky-Dine\Forkify\node_modules\is-glob\index.js132994185308156904 0
-74D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\set-array\dist\types133018354548937010 1
+74D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\set-array\dist\types133018354549067029 1
 57D:\GitHub\Forky-Dine\Forkify\node_modules\is-glob\LICENSE132994185308046888 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\instance\sort.js133018354717149604 0
 94D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\object\get-own-property-descriptor.js133018354674970351 0
@@ -2970,7 +2970,7 @@
 66D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\set\from.js133018354674070283 0
 62D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\detect-libc.ps1132994180094675451 0
 66D:\GitHub\Forky-Dine\Forkify\node_modules\entities\lib\encode.d.ts132994182006857135 0
-69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\config-default\test133018354538505527 1
+69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\config-default\test133018354539795624 1
 80D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\typed-array\to-spliced.js133018354725610252 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\typed-array\filter.js133018354665927429 0
 64D:\GitHub\Forky-Dine\Forkify\node_modules\entities\lib\encode.js132994182005506750 0
@@ -3293,7 +3293,7 @@
 80D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.number.parse-int.js133018354625507563 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\get-iterator.js133018354674600315 0
 86D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\highlight\node_modules\chalk\index.js132994179671448670 0
-85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config\subfolder133018354544273912 1
+85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config\subfolder133018354544643931 1
 62D:\GitHub\Forky-Dine\Forkify\node_modules\buffer-from\index.js132994179668535680 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\date\get-year.js133018354675330388 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\typed-array\of.js133018354705940610 0
@@ -3460,7 +3460,7 @@
 76D:\GitHub\Forky-Dine\Forkify\node_modules\cosmiconfig\dist\ExplorerSync.d.ts132994179872971756 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\date\to-primitive.js133018354724710167 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\promise\any.js133018354486165416 0
-52D:\GitHub\Forky-Dine\Forkify\dist\icons.dfd7a6db.svg133018376835551360 0
+52D:\GitHub\Forky-Dine\Forkify\dist\icons.dfd7a6db.svg133018401151581531 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\typed-array\of.js133018354705890615 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\regions\US.js133018354672980205 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\typed-array\to-locale-string.js133018354724260120 0
@@ -3529,7 +3529,7 @@
 70D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\dom-exception133018354726140284 1
 84D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\ordinary-to-primitive.js133018354705970601 0
 83D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\typed-array\last-index-of.js133018354689779155 0
-65D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\test133018354535295412 1
+65D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\test133018354535405418 1
 87D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\internals\async-iterator-prototype.js133018354491498689 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\lib\public\Target.js133018354617647779 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\symbol\match.js133018354697339741 0
@@ -3660,7 +3660,7 @@
 79D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\string\virtual\bold.js133018354525282093 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\lib\public\BundleGraph.js133018354577026036 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\string\virtual\fixed.js133018354670181407 0
-86D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\duplicate-targets133018354632692362 1
+86D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\duplicate-targets133018354632702354 1
 82D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\string\virtual\italics.js133018354686988011 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\global-this.js133018354675560396 0
 94D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\transformer-js\parcel-swc.linux-x64-gnu.node133018354642205856 0
@@ -3724,7 +3724,7 @@
 85D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\object\prevent-extensions.js133018354707238256 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\weak-map\index.js133018354679115710 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\array-buffer\slice.js133018354715879490 0
-63D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\src133018354578361032 1
+63D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\src133018354578741055 1
 87D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\media-fragments.js133018354640615745 0
 71D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\object\seal.js133018354713799338 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\stable\number\epsilon.js133018354618127843 0
@@ -3987,7 +3987,7 @@
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\proposals\set-methods.js133018354714299378 0
 83D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\multicolumn.js133018354645836143 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\proposals\string-at.js133018354720109818 0
-61D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\test133018354542627375 1
+61D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\test133018354549717063 1
 79D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\pointer.js133018354651869579 0
 81D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\proposals\string-code-points.js133018354720129819 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\map\index.js133018354678805686 0
@@ -4038,7 +4038,7 @@
 79D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\typed-array\uint8-array.js133018354730650607 0
 77D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.array.reverse.js133018354619402715 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.array.slice.js133018354619512702 0
-92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-ext133018354632592350 1
+92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-ext133018354632602349 1
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.array.some.js133018354619592733 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.array.sort.js133018354619652720 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\Environment.js133018354594490559 0
@@ -4098,7 +4098,7 @@
 79D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.number.to-fixed.js133018354625587559 0
 77D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.object.assign.js133018354625627564 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.object.define-getter.js133018354625848240 0
-96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-two133018354633165025 1
+96D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-two133018354633174995 1
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\date\index.js133018354682447469 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.object.define-properties.js133018354625868233 0
 103D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\transformer-react-refresh-wrap\src\helpers\helpers.js133018354496999665 0
@@ -4261,7 +4261,7 @@
 82D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\typed-array\group-by.js133018354675790410 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.typed-array.subarray.js133018354641465801 0
 86D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\esnext.number.from-string.js133018354650693607 0
-72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\test\integration133018354525272083 1
+72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\test\integration133018354525622105 1
 92D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.typed-array.to-locale-string.js133018354641885840 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\es.typed-array.uint16-array.js133018354642635914 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\function\bind.js133018354509743081 0
@@ -4432,7 +4432,7 @@
 90D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\web.dom-exception.constructor.js133018354733420814 0
 92D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\web.dom-exception.to-string-tag.js133018354733470815 0
 71D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\full\date\get-year.js133018354675380372 0
-76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\context133018354632552360 1
+76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\context133018354632562349 1
 66D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\resolver-default133018354515260640 1
 78D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\web.set-immediate.js133018354733550826 0
 77D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\modules\web.set-interval.js133018354733560821 0
@@ -5434,7 +5434,7 @@
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\code-frame\lib\index.js133018354548357107 0
 70D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\array\at.js133018354491928724 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\array\concat.js133018354579983040 0
-88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\application-targets133018354632482337 1
+88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\application-targets133018354632492373 1
 86D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\array\virtual\to-spliced.js133018354725410215 0
 79D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\features\array\copy-within.js133018354604823852 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\actual\number\parse-float.js133018354706561534 0
@@ -5609,7 +5609,7 @@
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\trim-left.js133018354727650408 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\trim-start.js133018354728830475 0
 67D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\virtual133018354729400513 1
-73D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\src133018354538925563 1
+73D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\src133018354539465598 1
 73D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\virtual\at.js133018354491868729 0
 76D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\virtual\blink.js133018354518570945 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\string\virtual\code-point-at.js133018354544007467 0
@@ -5828,7 +5828,7 @@
 67D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\array\slice.js133018354715819485 0
 66D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\array\sort.js133018354716969587 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\array\unshift.js133018354731980707 0
-93D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-type133018354632612356 1
+93D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-infer-type133018354632632361 1
 68D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\array\values.js133018354732740764 0
 65D:\GitHub\Forky-Dine\Forkify\node_modules\braces\lib\stringify.js132994185310706581 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\core-js\es\array\virtual\at.js133018354491818718 0
@@ -6209,10 +6209,10 @@
 70D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\README.md132994179708594605 0
 92D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\high-resolution-time.js133018354625597555 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\dist\trace-event.d.ts132994179726439095 0
-56D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css.map133018376835581355 0
+56D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css.map133018401151081499 0
 89D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_class_private_method_init.mjs133018354577136058 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\chrome-trace-event\dist\trace-event.js132994179658692117 0
-78D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\trace-mapping\dist\types133018354570681317 1
+78D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\trace-mapping\dist\types133018354571291359 1
 86D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\hash\parcel-hash.linux-x64-musl.node133018354633004994 0
 54D:\GitHub\Forky-Dine\Forkify\node_modules\chokidar\lib132994185309466195 1
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_ts_param.mjs133018354604913861 0
@@ -6537,7 +6537,7 @@
 85D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-selection.js133018354598999960 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-shapes.js133018354599769856 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-sticky.js133018354599989901 0
-60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\src133018354548646985 1
+60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\src133018354549317060 1
 88D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-supports-api.js133018354603394114 0
 81D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\css-table.js133018354603494123 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\requestidlecallback.js133018354654436999 0
@@ -6628,7 +6628,7 @@
 91D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-file-multiple.js133018354631095096 0
 87D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-minlength.js133018354631175119 0
 83D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-range.js133018354631315129 0
-55D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js.map133018376836381435 0
+55D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js.map133018402444252306 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\input-search.js133018354631335129 0
 52D:\GitHub\Forky-Dine\Forkify\node_modules\braces\lib132994185310756588 1
 90D:\GitHub\Forky-Dine\Forkify\node_modules\caniuse-lite\data\features\insertadjacenthtml.js133018354631615660 0
@@ -6846,7 +6846,7 @@
 82D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_async_to_generator.mjs133018354557060320 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_check_private_redeclaration.mjs133018354562106728 0
 98D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_class_apply_descriptor_destructure.mjs133018354562646759 0
-92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-plugin-not-found133018354540055637 1
+92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-plugin-not-found133018354541757310 1
 90D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_class_apply_descriptor_get.mjs133018354563116789 0
 97D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-engines\package.json133018354632742360 0
 90D:\GitHub\Forky-Dine\Forkify\node_modules\@swc\helpers\src\_class_apply_descriptor_set.mjs133018354565202248 0
@@ -7059,7 +7059,7 @@
 75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\utils\src\PromiseQueue.js133018354526192146 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\utils\src\sourcemap.js133018354532185126 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\utils\src\stream.js133018354533375206 0
-89D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-node-pipeline133018354539185578 1
+89D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-node-pipeline133018354539515597 1
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\utils\src\TapStream.js133018354534535321 0
 71D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\utils\src\throttle.js133018354535355418 0
 67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\markdown-ansi\src133018354528493607 1
@@ -7232,8 +7232,8 @@
 75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\packager-css\package.json133018354518910965 0
 66D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\packager-css\src133018354518040901 1
 79D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures133018354536215521 1
-85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\empty133018354535545433 1
-90D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\a133018354522451858 1
+85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\empty133018354535645452 1
+90D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\a133018354541967332 1
 107D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\peers-2.0\index.js133018354524262016 0
 91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\fs-search\fs-search.linux-arm64-musl.node133018354582974586 0
 103D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\package-manager\test\fixtures\packages\peers\index.js133018354525512090 0
@@ -7347,7 +7347,7 @@
 88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\node-resolver-core\src\NodeResolver.js133018354586060391 0
 67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\namer-default\lib133018354525412087 1
 71D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\namer-default\LICENSE133018354525042049 0
-85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-malformed133018354536725526 1
+85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config-malformed133018354537275558 1
 67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\namer-default\src133018354526002123 1
 83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\namer-default\src\DefaultNamer.js133018354526092134 0
 83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\namer-default\lib\DefaultNamer.js133018354525622105 0
@@ -7365,7 +7365,7 @@
 85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\hash\parcel-hash.linux-x64-gnu.node133018354629500189 0
 68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\package.json133018354535435418 0
 59D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\src133018354534815370 1
-60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\test133018354531315075 1
+60D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\test133018354532035106 1
 81D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\test\ContentGraph.test.js133018354531345059 0
 68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\src\index.js133018354532985199 0
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\graph\lib\AdjacencyList.js133018354527601175 0
@@ -7386,7 +7386,7 @@
 82D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\test\ValueEmitter.test.js133018354549817074 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\src\index.js133018354546161392 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\events\lib\Disposable.js133018354539905623 0
-64D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\src133018354533665243 1
+64D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\src133018354534155276 1
 82D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\test\markdown.test.js133018354535475433 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\diagnostic\src\diagnostic.js133018354535045388 0
 99D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\css-win32-x64-msvc\parcel-css.win32-x64-msvc.node133018354585910408 0
@@ -7396,34 +7396,34 @@
 67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\css\node\index.js133018354539635609 0
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\css\node\index.js.flow133018354537815600 0
 68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\css\node\index.mjs133018354545093967 0
-59D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test133018354621660466 1
+59D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test133018354630785073 1
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\EntryRequest.test.js133018354593413528 0
-68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures133018354633144991 1
+68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures133018354633165025 1
 82D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\PackagerRunner.test.js133018354606099819 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\PublicBundle.test.js133018354609800419 0
 82D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\RequestTracker.test.js133018354612020894 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\serializer.test.js133018354616387645 0
 81D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\TargetRequest.test.js133018354621500763 0
 73D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\test-utils.js133018354621770452 0
-83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\common-targets133018354632532351 1
-75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config133018354542827397 1
-91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-mismatch133018354632642355 1
-83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-targets133018354632672368 1
+83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\common-targets133018354632542353 1
+75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\config133018354544273912 1
+91D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-format-mismatch133018354632652357 1
+83D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\custom-targets133018354632682358 1
 81D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\ParcelConfig.schema.js133018354607830062 0
-85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-distpath133018354632712358 1
-92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-source-not-file133018354595950651 1
-99D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-not-file133018354596460692 1
-84D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-targets133018354632904977 1
-94D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\library-custom-scopehoist133018354632944987 1
+85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-distpath133018354632722370 1
+92D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-source-not-file133018354632762384 1
+99D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-target-source-not-file133018354632885001 1
+84D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\invalid-targets133018354632914982 1
+94D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\library-custom-scopehoist133018354632994978 1
 87D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\library-scopehoist133018354633014992 1
 89D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\main-format-mismatch133018354633044995 1
 77D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\main-mjs133018354633085019 1
-75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\parcel133018354633095004 1
+75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\parcel133018354633361921 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\plugins133018354598219742 1
-97D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-none133018354633135001 1
+97D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-none133018354633144991 1
 109D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-two\package.json133018354633174995 0
 109D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\targets-default-distdir-one\package.json133018354633155005 0
-120D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-bad-engines133018354598309746 1
+120D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\plugins\node_modules\parcel-transformer-bad-engines133018354633115014 1
 84D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\parcel\index.js133018354598129738 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\parcel\package.json133018354633104991 0
 100D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\test\fixtures\library-scopehoist\package.json133018354633034996 0
@@ -7446,7 +7446,7 @@
 68D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\Parcel.js133018354606812287 0
 65D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public133018354617657788 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\ReporterRunner.js133018354610430464 0
-67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests133018354631395157 1
+67D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests133018354632056974 1
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\summarizeRequest.js133018354616697680 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier\lib133018354544793949 1
 72D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\Validation.js133018354631135116 0
@@ -7458,7 +7458,7 @@
 84D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests\TargetRequest.js133018354620953099 0
 88D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\requests\ValidationRequest.js133018354631215121 0
 75D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\Bundle.js133018354571511368 0
-51D:\GitHub\Forky-Dine\Forkify\dist\logo.726d37a8.png133018376835471343 0
+51D:\GitHub\Forky-Dine\Forkify\dist\logo.726d37a8.png133018401151281518 0
 55D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo.ps1132994180094715461 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\BundleGraph.js133018354581784490 0
 80D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\core\src\public\BundleGroup.js133018354585460328 0
@@ -7489,7 +7489,7 @@
 85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\compressor-raw\src\RawCompressor.js133018354541937323 0
 85D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\compressor-raw\lib\RawCompressor.js133018354539905623 0
 63D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\lib133018354583034607 1
-64D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\test133018354548666998 1
+64D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\test133018354580063043 1
 73D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\test\fixtures133018354548937010 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\codeframe\lib\codeframe.js133018354578171011 0
 66D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\cache\index.d.ts133018354551932172 0
@@ -7501,7 +7501,7 @@
 70D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\cache\lib\types.d.ts133018354553694587 0
 69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\bundler-default\lib133018354539815632 1
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\bundler-default\package.json133018354542887410 0
-69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\bundler-default\src133018354541857319 1
+69D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\bundler-default\src133018354542247364 1
 87D:\GitHub\Forky-Dine\Forkify\node_modules\@parcel\bundler-default\src\DefaultBundler.js133018354542447369 0
 102D:\GitHub\Forky-Dine\Forkify\node_modules\@msgpackr-extract\msgpackr-extract-win32-x64\node.abi93.node132994179745188364 0
 101D:\GitHub\Forky-Dine\Forkify\node_modules\@msgpackr-extract\msgpackr-extract-win32-x64\node.napi.node132994179770997805 0
@@ -7540,7 +7540,7 @@
 74D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist133018354537525585 1
 94D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist\sourcemap-codec.mjs133018354537035534 0
 98D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist\sourcemap-codec.mjs.map133018354535285396 0
-80D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist\types133018354537525585 1
+80D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist\types133018354538395518 1
 101D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\sourcemap-codec\dist\types\sourcemap-codec.d.ts133018354538475522 0
 74D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\source-map\README.md132994179771997902 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\source-map\dist\source-map.mjs132994179798847856 0
@@ -7555,7 +7555,7 @@
 89D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\set-array\dist\types\set-array.d.ts133018354549147062 0
 70D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\resolve-uri\dist133018354549047028 1
 93D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\resolve-uri\dist\resolve-uri.umd.js.map133018354545203967 0
-76D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\resolve-uri\dist\types133018354549047028 1
+76D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\resolve-uri\dist\types133018354549187019 1
 70D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist133018354554520869 1
 73D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\LICENSE133018354547601496 0
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\package.json133018354549277034 0
@@ -7563,7 +7563,7 @@
 78D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\src\types.ts133018354562406752 0
 86D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist\gen-mapping.mjs133018354553364555 0
 90D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist\gen-mapping.mjs.map133018354549707061 0
-76D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist\types133018354557924037 1
+76D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist\types133018354561956702 1
 87D:\GitHub\Forky-Dine\Forkify\node_modules\@jridgewell\gen-mapping\dist\types\types.d.ts133018354562106728 0
 59D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\code-frame133018354548666998 1
 76D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier133018354548526975 1
@@ -7592,7 +7592,7 @@
 71D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\highlight\lib\index.js133018354543117409 0
 84D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier\LICENSE133018354542377360 0
 89D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier\package.json133018354546851436 0
-84D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier\scripts133018354548516975 1
+84D:\GitHub\Forky-Dine\Forkify\node_modules\@babel\helper-validator-identifier\scripts133018354548626995 1
 52D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\acorn132994180094665475 0
 64D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\browserslist-lint133018354753152289 0
 63D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\browserslist.cmd133018354753142290 0
@@ -7614,9 +7614,9 @@
 51D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo132994180094715461 0
 55D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\svgo.cmd132994180094715461 0
 57D:\GitHub\Forky-Dine\Forkify\node_modules\.bin\terser.cmd132994180094745489 0
-54D:\GitHub\Forky-Dine\Forkify\dist\favicon.8b2f57bf.png133018376836181390 0
-52D:\GitHub\Forky-Dine\Forkify\dist\icons.21bad73c.svg133018376836281410 0
+54D:\GitHub\Forky-Dine\Forkify\dist\favicon.8b2f57bf.png133018401152501611 0
+52D:\GitHub\Forky-Dine\Forkify\dist\icons.21bad73c.svg133018401153381680 0
 55D:\GitHub\Forky-Dine\Forkify\dist\index.62406edb.js.map132995158682955521 0
-51D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js133018376836331418 0
-52D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css133018376835551360 0
-44D:\GitHub\Forky-Dine\Forkify\dist\index.html133018376835551360 0
+51D:\GitHub\Forky-Dine\Forkify\dist\index.e37f48ea.js133018402444212312 0
+52D:\GitHub\Forky-Dine\Forkify\dist\index.f7626f62.css133018401151031496 0
+44D:\GitHub\Forky-Dine\Forkify\dist\index.html133018401151591537 0
