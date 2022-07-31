@@ -86,9 +86,22 @@ const controlPagination = async function (gotoValue) {
   paginationView.render(model.state.search);    //then as new page value is in model, view.js->render()->paginationView.js->_generateMarkup() has internal logic to render only that page
 };
 
+const controlServings = async function (newserving) {
+  //1. update quantity
+  model.updateServings(newserving);
+
+  //2. display in UI
+  // recipeView.render(model.state.recipe);
+
+  recipeView.update(model.state.recipe);
+};
+
+
 //first init() will run when page load
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);  //publisher subscriber pattern
+
+  recipeView.addHandlerServing(controlServings);
 
   searchView.addHandlerSearch(controlSearch);
 

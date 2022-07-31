@@ -591,9 +591,17 @@ const controlPagination = async function(gotoValue) {
     //2.Pagination 
     (0, _paginationViewJsDefault.default).render(_modelJs.state.search); //then as new page value is in model, view.js->render()->paginationView.js->_generateMarkup() has internal logic to render only that page
 };
+const controlServings = async function(newserving) {
+    //1. update quantity
+    _modelJs.updateServings(newserving);
+    //2. display in UI
+    // recipeView.render(model.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
+};
 //first init() will run when page load
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipe); //publisher subscriber pattern
+    (0, _recipeViewJsDefault.default).addHandlerServing(controlServings);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearch);
     (0, _paginationViewJsDefault.default).addHandlerRender(controlPagination);
 };
@@ -2268,6 +2276,7 @@ parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
 parcelHelpers.export(exports, "loadSearchResult", ()=>loadSearchResult);
 parcelHelpers.export(exports, "getResultByPage", ()=>getResultByPage);
+parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./Config.js");
 var _helperJs = require("./views/helper.js");
@@ -2327,6 +2336,12 @@ const getResultByPage = function(page = state.search.page) {
     const start = (page - 1) * 10;
     const end = page * 10;
     return state.search.result.slice(start, end);
+};
+const updateServings = function(newserving) {
+    state.recipe.ingredients.forEach((x)=>{
+        x.quantity = x.quantity / state.recipe.servings * newserving;
+    });
+    state.recipe.servings = newserving;
 };
 
 },{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
@@ -2414,6 +2429,15 @@ class RecipeView extends (0, _viewDefault.default) {
             "load"
         ].forEach((ev)=>window.addEventListener(ev, handler));
     }
+    addHandlerServing(handler) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--update-servings");
+            if (!btn) return;
+            const updateTo = +btn.dataset.updateTo; //"updateTo" camnel case of "data-update-to"
+            console.log(btn);
+            if (updateTo > 0) handler(updateTo);
+        });
+    }
     _generateMarkup() {
         return `
         <figure class="recipe__fig">
@@ -2439,13 +2463,13 @@ class RecipeView extends (0, _viewDefault.default) {
                 <span class="recipe__info-text">servings</span>
     
                 <div class="recipe__info-buttons">
-                  <button class="btn--tiny btn--increase-servings">
+                  <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings - 1}">
                     <svg>
                       <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
                     </svg>
                   </button>
-                  <button class="btn--tiny btn--increase-servings">
-                      <svg>
+                  <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings + 1}">
+                    <svg>
                       <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
                     </svg>
                   </button>
@@ -2815,6 +2839,24 @@ class View {
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup); //DOM insertion
     }
+    update(data) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
+        this._data = data; //API data  
+        const newmarkup = this._generateMarkup();
+        //logic to only update required UI changes
+        const newDOM = document.createRange().createContextualFragment(newmarkup); //DOM
+        const newElement = newDOM.querySelectorAll("*"); // "*" means all of them
+        const currElement = this._parentElement.querySelectorAll("*");
+        newElement.forEach((newEL, i)=>{
+            const curEL = currElement[i];
+            //console.log(newEL, newEL.isEqualNode(curEL));  //to print the difference between currElement and newElement
+            //to copy insame text
+            if (!newEL.isEqualNode(curEL) && newEL.firstChild?.nodeValue.trim() !== "") //"nodeValue" will remove all tag text and keep only UI text . It will hide all html tags
+            curEL.textContent = newEL.textContent;
+            //also update unsame attribute
+            if (!newEL.isEqualNode(curEL)) Array.from(newEL.attributes).forEach((attr)=>curEL.setAttribute(attr.name, attr.value));
+        });
+    }
     _clear() {
         this._parentElement.innerHTML = "";
     }
@@ -2897,9 +2939,10 @@ class resultsView extends (0, _viewJsDefault.default) {
         return this._data.map(this._generateHTMLMarkup).join(""); //to display multiple objects
     }
     _generateHTMLMarkup(result) {
+        const id = window.location.hash.slice(1); //from browser's querystring take id after "#" keyword
         return `
             <li class="preview">
-                <a class="preview__link" href="#${result.id}">
+                <a class="preview__link  ${result.id === id ? "preview__link--active" : ""}" href="#${result.id}">
                 <figure class="preview__fig">
                     <img src="${result.image}" alt="${result.title}" />
                 </figure>

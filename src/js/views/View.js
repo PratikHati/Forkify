@@ -21,9 +21,49 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);   //DOM insertion
   }
 
+  update(data) {                              //data is already updated
 
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      return this.renderError();
+    }
 
-  _clear() {
+    this._data = data;                          //API data  
+
+    const newmarkup = this._generateMarkup();
+
+    //logic to only update required UI changes
+
+    const newDOM = document.createRange().createContextualFragment(newmarkup);   //DOM
+
+    const newElement = newDOM.querySelectorAll('*');  // "*" means all of them
+
+    const currElement = this._parentElement.querySelectorAll('*');
+
+    newElement.forEach((newEL, i) => {    //arrow function
+
+      const curEL = currElement[i];
+
+      //console.log(newEL, newEL.isEqualNode(curEL));  //to print the difference between currElement and newElement
+
+      //to copy insame text
+      if (!newEL.isEqualNode(curEL) && newEL.firstChild?.nodeValue.trim() !== "") {
+        //"nodeValue" will remove all tag text and keep only UI text . It will hide all html tags
+
+        curEL.textContent = newEL.textContent;
+
+        //update curEL not newEL as we don't want ro re render new content, just update changed content
+      }
+
+      //also update unsame attribute
+      if (!newEL.isEqualNode(curEL)) {
+
+        Array.from(newEL.attributes).forEach(attr => curEL.setAttribute(attr.name, attr.value));
+      }
+    });
+
+  }
+
+  _clear() {  
     this._parentElement.innerHTML = '';
   }
 
