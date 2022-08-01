@@ -5,6 +5,7 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
+import { async } from 'regenerator-runtime';
 
 if (module.hot) {
   module.hot.accept();
@@ -100,11 +101,28 @@ const controlServings = async function (newserving) {
 };
 
 
+const controlAddBookmark = async function () {
+
+  //1.make bookmarked = yes
+  model.receipeBookmarked(model.state.recipe);
+
+  //console.log(model.state.recipe);
+
+  //2.rerender/update on UI
+  recipeView.update(model.state.recipe);
+}
+
+const controlRemoveBookmark = async function(){
+
+}
+
 //first init() will run when page load
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);  //publisher subscriber pattern
 
   recipeView.addHandlerServing(controlServings);
+
+  recipeView.addHandlerBookmark(controlAddBookmark);
 
   searchView.addHandlerSearch(controlSearch);
 

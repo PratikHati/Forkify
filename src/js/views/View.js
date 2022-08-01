@@ -4,7 +4,7 @@ import icons from 'url:../../img/icons.svg'; //parcel 2
 export default class View {
   _data;
 
-  render(data) {
+  render(data) {          //first time render
 
 
     if (!data || (Array.isArray(data) && data.length === 0)) {
@@ -21,7 +21,7 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);   //DOM insertion
   }
 
-  update(data) {                              //data is already updated
+  update(data) {                              //different data is needed to update , not fully rerender
 
     if (!data || (Array.isArray(data) && data.length === 0)) {
       return this.renderError();

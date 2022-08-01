@@ -10,6 +10,7 @@ export const state = {
         page: 1,
         result: [],
     },
+    bookmark:[],
 };
 
 export const loadRecipe = async function (id) {
@@ -33,6 +34,7 @@ export const loadRecipe = async function (id) {
             ingredients: recipe.ingredients
         };
 
+        
         //console.log(state.recipe);
     }
     catch (err) {
@@ -61,6 +63,7 @@ export const loadSearchResult = async function (query) {
             };
         });
 
+        state.search.page = 1;      //bug fixed to rerender search resukt from page 1
         //console.log(state.search.result);
     }
     catch (err) {
@@ -87,4 +90,14 @@ export const updateServings = function (newserving) {
     });
 
     state.recipe.servings = newserving;
+};
+
+
+export const receipeBookmarked = function(receipe){
+
+    state.bookmark.push(receipe);
+
+    if(state.recipe.id === receipe.id){
+        receipe.bookmarked = true;      //a new attribute "bookmarked" added for later use
+    }
 };
