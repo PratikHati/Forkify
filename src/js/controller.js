@@ -23,6 +23,9 @@ const controlRecipe = async function () {
       return;
     }
 
+    //0.Mark preview for currently selected receipe
+    resultsView.update(model.getResultByPage());
+
     //1.Loading recipe
     recipeView.spinnerRender();
 

@@ -552,6 +552,8 @@ const controlRecipe = async function() {
         //console.log(id);
         //if null pls return
         if (!id) return;
+        //0.Mark preview for currently selected receipe
+        (0, _resultsViewJsDefault.default).update(_modelJs.getResultByPage());
         //1.Loading recipe
         (0, _recipeViewJsDefault.default).spinnerRender();
         //call loadRecipe()
@@ -2434,7 +2436,7 @@ class RecipeView extends (0, _viewDefault.default) {
             const btn = e.target.closest(".btn--update-servings");
             if (!btn) return;
             const updateTo = +btn.dataset.updateTo; //"updateTo" camnel case of "data-update-to"
-            console.log(btn);
+            //console.log(btn);
             if (updateTo > 0) handler(updateTo);
         });
     }
