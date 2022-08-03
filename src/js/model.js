@@ -34,7 +34,11 @@ export const loadRecipe = async function (id) {
             ingredients: recipe.ingredients
         };
 
-        
+        if(state.bookmark.some(bookmark=> bookmark.id === id))  //to bookmark all previously selected receipes
+            state.recipe.bookmarked = true;
+        else
+            state.recipe.bookmarked = false;
+
         //console.log(state.recipe);
     }
     catch (err) {
@@ -93,11 +97,29 @@ export const updateServings = function (newserving) {
 };
 
 
-export const receipeBookmarked = function(receipe){
+export const receipeAddBookmarked = function(receipe){
 
     state.bookmark.push(receipe);
 
-    if(state.recipe.id === receipe.id){
+    // if(receipe.bookmarked === true){    //if already bookmarked, remove it
+    //     receipe.bookmarked = false;
+    //     return;
+    // }
+
+    if(state.recipe.id === receipe.id){     //if not already bookmarked, just mark it
         receipe.bookmarked = true;      //a new attribute "bookmarked" added for later use
     }
 };
+
+
+    export const receipeRemoveBookmarked = function (i) {
+
+        const index = state.bookmark.findIndex(x=>x.id === i);
+    
+        state.bookmark.slice(index,1);  //delete the selected recipe
+
+        if(state.recipe.id === i){     //if  already bookmarked, just fasle mark it
+            state.recipe.bookmarked = false;      //a new attribute "bookmarked" added for later use
+        }
+    };
+    

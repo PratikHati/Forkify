@@ -4,7 +4,7 @@ import icons from 'url:../../img/icons.svg'; //parcel 2
 export default class View {
   _data;
 
-  render(data) {          //first time render
+  render(data, render = true) {          //first time render
 
 
     if (!data || (Array.isArray(data) && data.length === 0)) {
@@ -15,6 +15,9 @@ export default class View {
 
     const markup = this._generateMarkup();
 
+    if (!render) {    //only for bookmarkView and resultView
+      return markup;
+    }
     //console.log("mark up is", markup);
 
     this._clear();
@@ -63,7 +66,7 @@ export default class View {
 
   }
 
-  _clear() {  
+  _clear() {
     this._parentElement.innerHTML = '';
   }
 

@@ -1,5 +1,6 @@
 import View from "./View.js";
 import icons from 'url:../../img/icons.svg';
+import previewView from "./previewView.js";
 
 class resultsView extends View {
     _parentElement = document.querySelector('.results');
@@ -9,25 +10,7 @@ class resultsView extends View {
     _generateMarkup() {
 
         console.log(this._data);
-        return this._data.map(this._generateHTMLMarkup).join(''); //to display multiple objects
-    }
-
-    _generateHTMLMarkup(result) {
-        const id = window.location.hash.slice(1);   //from browser's querystring take id after "#" keyword
-
-        return `
-            <li class="preview">
-                <a class="preview__link  ${result.id === id ? 'preview__link--active' : ''}" href="#${result.id}">
-                <figure class="preview__fig">
-                    <img src="${result.image}" alt="${result.title}" />
-                </figure>
-                <div class="preview__data">
-                    <h4 class="preview__title">${result.title}</h4>
-                    <p class="preview__publisher">${result.publisher}</p>
-                </div>
-                </a>
-            </li>
-        `;
+        return this._data.map(x=>previewView.render(x,false)).join(''); //to display multiple objects
     }
 };
 

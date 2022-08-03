@@ -5,6 +5,7 @@ import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
+import bookmarksView from './views/bookmarksView.js';
 import { async } from 'regenerator-runtime';
 
 if (module.hot) {
@@ -26,6 +27,8 @@ const controlRecipe = async function () {
 
     //0.Mark preview for currently selected receipe
     resultsView.update(model.getResultByPage());
+    
+    bookmarksView.update(model.state.bookmark);
 
     //1.Loading recipe
     recipeView.spinnerRender();
@@ -103,17 +106,23 @@ const controlServings = async function (newserving) {
 
 const controlAddBookmark = async function () {
 
-  //1.make bookmarked = yes
-  model.receipeBookmarked(model.state.recipe);
+  if(!model.state.recipe.bookmarked){
+    
+    //1.make bookmarked = yes
+    model.receipeAddBookmarked(model.state.recipe);
+  }
+  else{
+
+    //1.make bookmarked = No
+    model.receipeRemoveBookmarked(model.state.recipe.id);
+  }
 
   //console.log(model.state.recipe);
-
   //2.rerender/update on UI
   recipeView.update(model.state.recipe);
-}
 
-const controlRemoveBookmark = async function(){
-
+  //3.Render bookmark only at left upper side of UI
+  bookmarksView.render(model.state.bookmark);
 }
 
 //first init() will run when page load
