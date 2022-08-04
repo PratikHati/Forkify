@@ -96,30 +96,44 @@ export const updateServings = function (newserving) {
     state.recipe.servings = newserving;
 };
 
+function trackRecipe(){     //to save current bookmark locally in chrome
+
+    localStorage.setItem('bookmarks', JSON.stringify(state.bookmark));      //(key,string)
+}
 
 export const receipeAddBookmarked = function(receipe){
 
     state.bookmark.push(receipe);
 
-    // if(receipe.bookmarked === true){    //if already bookmarked, remove it
-    //     receipe.bookmarked = false;
-    //     return;
-    // }
-
     if(state.recipe.id === receipe.id){     //if not already bookmarked, just mark it
         receipe.bookmarked = true;      //a new attribute "bookmarked" added for later use
     }
+
+    trackRecipe();      //to save current bookmark locally in chrome
 };
 
 
-    export const receipeRemoveBookmarked = function (i) {
+export const receipeRemoveBookmarked = function (i) {
 
-        const index = state.bookmark.findIndex(x=>x.id === i);
+    const index = state.bookmark.findIndex(x => x.id === i);
+
+    state.bookmark.slice(index, 1);  //delete the selected recipe
+
+    if (state.recipe.id === i) {     //if  already bookmarked, just fasle mark it
+        state.recipe.bookmarked = false;      //a new attribute "bookmarked" added for later use
+    }
+
+    trackRecipe();      //to remove current bookmark locally in chrome
+};
+
+function init(){
     
-        state.bookmark.slice(index,1);  //delete the selected recipe
+    const storage = localStorage.getItem('bookmarks');
 
-        if(state.recipe.id === i){     //if  already bookmarked, just fasle mark it
-            state.recipe.bookmarked = false;      //a new attribute "bookmarked" added for later use
-        }
-    };
+    if(storage){
+        state.bookmark = JSON.parse(storage);   //string in chrome storage , then convert to object
+    }
+}
+
+init();
     

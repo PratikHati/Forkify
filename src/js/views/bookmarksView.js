@@ -7,6 +7,10 @@ class bookmarksView extends View {
     _errorMessage = "No Bookmarked recipes yet! :|";
     _message = "";
 
+    addHandlerRender(handler){
+        handler();
+    }
+
     _generateMarkup() {
 
         console.log(this._data);

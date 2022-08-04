@@ -557,6 +557,7 @@ const controlRecipe = async function() {
         if (!id) return;
         //0.Mark preview for currently selected receipe
         (0, _resultsViewJsDefault.default).update(_modelJs.getResultByPage());
+        //1.use render() not update()
         (0, _bookmarksViewJsDefault.default).update(_modelJs.state.bookmark);
         //1.Loading recipe
         (0, _recipeViewJsDefault.default).spinnerRender();
@@ -615,8 +616,12 @@ const controlAddBookmark = async function() {
     //3.Render bookmark only at left upper side of UI
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
 };
+const controlBookmarkView = async function() {
+    (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
+};
 //first init() will run when page load
 const init = function() {
+    (0, _bookmarksViewJsDefault.default).addHandlerRender(controlBookmarkView); //at first load already saved bookmarks from chrome db
     (0, _recipeViewJsDefault.default).addHandlerRender(controlRecipe); //publisher subscriber pattern
     (0, _recipeViewJsDefault.default).addHandlerServing(controlServings);
     (0, _recipeViewJsDefault.default).addHandlerBookmark(controlAddBookmark);
@@ -2367,19 +2372,25 @@ const updateServings = function(newserving) {
     });
     state.recipe.servings = newserving;
 };
+function trackRecipe() {
+    localStorage.setItem("bookmarks", JSON.stringify(state.bookmark)); //(key,string)
+}
 const receipeAddBookmarked = function(receipe) {
     state.bookmark.push(receipe);
-    // if(receipe.bookmarked === true){    //if already bookmarked, remove it
-    //     receipe.bookmarked = false;
-    //     return;
-    // }
     if (state.recipe.id === receipe.id) receipe.bookmarked = true; //a new attribute "bookmarked" added for later use
+    trackRecipe(); //to save current bookmark locally in chrome
 };
 const receipeRemoveBookmarked = function(i) {
     const index = state.bookmark.findIndex((x)=>x.id === i);
     state.bookmark.slice(index, 1); //delete the selected recipe
     if (state.recipe.id === i) state.recipe.bookmarked = false; //a new attribute "bookmarked" added for later use
+    trackRecipe(); //to remove current bookmark locally in chrome
 };
+function init() {
+    const storage = localStorage.getItem("bookmarks");
+    if (storage) state.bookmark = JSON.parse(storage); //string in chrome storage , then convert to object
+}
+init();
 
 },{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -2388,7 +2399,7 @@ parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIME_OUT_SEC", ()=>TIME_OUT_SEC);
 parcelHelpers.export(exports, "COUNT_PER_PAGE", ()=>COUNT_PER_PAGE);
 const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
-const TIME_OUT_SEC = 10;
+const TIME_OUT_SEC = 10000000;
 const COUNT_PER_PAGE = 10;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
@@ -3093,6 +3104,9 @@ class bookmarksView extends (0, _viewJsDefault.default) {
     _parentElement = document.querySelector(".bookmarks__list");
     _errorMessage = "No Bookmarked recipes yet! :|";
     _message = "";
+    addHandlerRender(handler) {
+        handler();
+    }
     _generateMarkup() {
         console.log(this._data);
         return this._data.map((x)=>(0, _previewViewJsDefault.default).render(x, false)).join(""); //to display multiple objects

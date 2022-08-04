@@ -27,7 +27,8 @@ const controlRecipe = async function () {
 
     //0.Mark preview for currently selected receipe
     resultsView.update(model.getResultByPage());
-    
+
+    //1.use render() not update()
     bookmarksView.update(model.state.bookmark);
 
     //1.Loading recipe
@@ -125,8 +126,14 @@ const controlAddBookmark = async function () {
   bookmarksView.render(model.state.bookmark);
 }
 
+const controlBookmarkView = async function(){
+
+  bookmarksView.render(model.state.bookmark);
+}
 //first init() will run when page load
 const init = function () {
+  bookmarksView.addHandlerRender(controlBookmarkView);  //at first load already saved bookmarks from chrome db
+
   recipeView.addHandlerRender(controlRecipe);  //publisher subscriber pattern
 
   recipeView.addHandlerServing(controlServings);
