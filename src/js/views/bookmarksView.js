@@ -7,13 +7,13 @@ class bookmarksView extends View {
     _errorMessage = "No Bookmarked recipes yet! :|";
     _message = "";
 
-    addHandlerRender(handler){
+    addHandlerRender(handler) {
         handler();
     }
 
     _generateMarkup() {
 
-        console.log(this._data);
+        //console.log(this._data);
         return this._data.map(x => previewView.render(x, false)).join(''); //to display multiple objects
     }
 

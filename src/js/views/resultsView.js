@@ -9,7 +9,7 @@ class resultsView extends View {
 
     _generateMarkup() {
 
-        console.log(this._data);
+        //console.log(this._data);
         return this._data.map(x=>previewView.render(x,false)).join(''); //to display multiple objects
     }
 };

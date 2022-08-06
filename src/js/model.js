@@ -10,7 +10,7 @@ export const state = {
         page: 1,
         result: [],
     },
-    bookmark:[],
+    bookmark: [],
 };
 
 export const loadRecipe = async function (id) {
@@ -34,7 +34,7 @@ export const loadRecipe = async function (id) {
             ingredients: recipe.ingredients
         };
 
-        if(state.bookmark.some(bookmark=> bookmark.id === id))  //to bookmark all previously selected receipes
+        if (state.bookmark.some(bookmark => bookmark.id === id))  //to bookmark all previously selected receipes
             state.recipe.bookmarked = true;
         else
             state.recipe.bookmarked = false;
@@ -96,18 +96,29 @@ export const updateServings = function (newserving) {
     state.recipe.servings = newserving;
 };
 
-function trackRecipe(){     //to save current bookmark locally in chrome
+function trackRecipe() {     //to save current bookmark locally in chrome
 
     localStorage.setItem('bookmarks', JSON.stringify(state.bookmark));      //(key,string)
+
+    //localStorage.setItem( state.recipe.id , JSON.stringify(state.bookmark));      //(key,string)
+
 }
 
-export const receipeAddBookmarked = function(receipe){
+function clearBookmark(id) {
+    localStorage.clear(id);
+}
+
+//clearBookmark();
+
+export const receipeAddBookmarked = function (receipe) {
 
     state.bookmark.push(receipe);
 
-    if(state.recipe.id === receipe.id){     //if not already bookmarked, just mark it
+    if (state.recipe.id === receipe.id) {     //if not already bookmarked, just mark it
         receipe.bookmarked = true;      //a new attribute "bookmarked" added for later use
     }
+
+    console.log(state.bookmark);
 
     trackRecipe();      //to save current bookmark locally in chrome
 };
@@ -117,23 +128,28 @@ export const receipeRemoveBookmarked = function (i) {
 
     const index = state.bookmark.findIndex(x => x.id === i);
 
-    state.bookmark.slice(index, 1);  //delete the selected recipe
+    debugger;
+
+    var temp = state.bookmark;
+    temp.slice(index,1);  //delete the selected recipe (error)
+    state.bookmark = temp;
 
     if (state.recipe.id === i) {     //if  already bookmarked, just fasle mark it
         state.recipe.bookmarked = false;      //a new attribute "bookmarked" added for later use
     }
 
     trackRecipe();      //to remove current bookmark locally in chrome
+    //debugger;
+    //clearBookmark(state.recipe.id);
 };
 
-function init(){
-    
+function init() {
+
     const storage = localStorage.getItem('bookmarks');
 
-    if(storage){
+    if (storage) {
         state.bookmark = JSON.parse(storage);   //string in chrome storage , then convert to object
     }
 }
 
 init();
-    

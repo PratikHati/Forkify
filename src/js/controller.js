@@ -6,6 +6,7 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 
 if (module.hot) {
@@ -143,6 +144,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearch);
 
   paginationView.addHandlerRender(controlPagination);
+
 };
 
 init();

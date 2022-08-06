@@ -101,7 +101,7 @@ body {
 }
 
 .btn--inline {
-  color: #f38e82;
+  color: #df5e5e;
   cursor: pointer;
   background-color: #f9f5f3;
   border: none;
@@ -172,7 +172,7 @@ body {
 .btn--tiny svg {
   height: 100%;
   width: 100%;
-  fill: #f38e82;
+  fill: #df5e5e;
   transition: all .3s;
 }
 
@@ -195,7 +195,7 @@ body {
 }
 
 .heading--2 {
-  color: #f38e82;
+  color: #df5e5e;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 2.5rem;
@@ -215,7 +215,7 @@ body {
 .spinner svg {
   height: 6rem;
   width: 6rem;
-  fill: #f38e82;
+  fill: #df5e5e;
   animation: rotate 2s linear infinite;
 }
 
@@ -239,7 +239,7 @@ body {
 .message svg, .error svg {
   height: 3rem;
   width: 3rem;
-  fill: #f38e82;
+  fill: #df5e5e;
   transform: translateY(-.3rem);
 }
 
@@ -344,7 +344,7 @@ body {
 .nav__btn svg {
   height: 2.4rem;
   width: 2.4rem;
-  fill: #f38e82;
+  fill: #df5e5e;
   margin-right: .7rem;
   transform: translateY(-1px);
 }
@@ -449,7 +449,7 @@ body {
 }
 
 .preview__title {
-  color: #f38e82;
+  color: #df5e5e;
   text-transform: uppercase;
   text-overflow: ellipsis;
   max-width: 25rem;
@@ -482,7 +482,7 @@ body {
 .preview__user-generated svg {
   height: 1.2rem;
   width: 1.2rem;
-  fill: #f38e82;
+  fill: #df5e5e;
 }
 
 .search-results {
@@ -602,7 +602,7 @@ body {
 .recipe__info-icon {
   height: 2.35rem;
   width: 2.35rem;
-  fill: #f38e82;
+  fill: #df5e5e;
   margin-right: 1.15rem;
 }
 
@@ -632,7 +632,7 @@ body {
 .recipe__user-generated svg {
   height: 2.25rem;
   width: 2.25rem;
-  fill: #f38e82;
+  fill: #df5e5e;
 }
 
 .recipe__ingredients {
@@ -659,7 +659,7 @@ body {
 .recipe__icon {
   height: 2rem;
   width: 2rem;
-  fill: #f38e82;
+  fill: #df5e5e;
   flex: none;
   margin-top: .1rem;
   margin-right: 1.1rem;
@@ -764,7 +764,7 @@ body {
 
 .upload__column input:focus {
   background-color: #f9f5f3;
-  border: 1px solid #f38e82;
+  border: 1px solid #df5e5e;
   outline: none;
 }
 
