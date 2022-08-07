@@ -43,4 +43,4 @@ class addRecipeView extends View {
     }
 }
 
-export default new addRecipeView();    
+export default new addRecipeView();   
