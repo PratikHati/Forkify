@@ -108,12 +108,12 @@ const controlServings = async function (newserving) {
 
 const controlAddBookmark = async function () {
 
-  if(!model.state.recipe.bookmarked){
-    
+  if (!model.state.recipe.bookmarked) {
+
     //1.make bookmarked = yes
     model.receipeAddBookmarked(model.state.recipe);
   }
-  else{
+  else {
 
     //1.make bookmarked = No
     model.receipeRemoveBookmarked(model.state.recipe.id);
@@ -127,7 +127,11 @@ const controlAddBookmark = async function () {
   bookmarksView.render(model.state.bookmark);
 }
 
-const controlBookmarkView = async function(){
+const controlRecipeUpload = async function (Recipe) {
+  console.log(Recipe);
+}
+
+const controlBookmarkView = async function () {
 
   bookmarksView.render(model.state.bookmark);
 }
@@ -144,6 +148,8 @@ const init = function () {
   searchView.addHandlerSearch(controlSearch);
 
   paginationView.addHandlerRender(controlPagination);
+
+  addRecipeView._addHendlerUpload(controlRecipeUpload);
 
 };
 
