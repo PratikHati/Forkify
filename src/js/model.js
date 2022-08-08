@@ -131,7 +131,7 @@ export const receipeRemoveBookmarked = function (i) {
     debugger;
 
     var temp = state.bookmark;
-    temp.slice(index,1);  //delete the selected recipe (error)
+    temp.slice(index, 1);  //delete the selected recipe (error)
     state.bookmark = temp;
 
     if (state.recipe.id === i) {     //if  already bookmarked, just fasle mark it
@@ -153,3 +153,33 @@ function init() {
 }
 
 init();
+
+
+//BELOW FUNCTION IS "AWSOME", just think......................................
+export const uploadRecipe = async function (newRecipe) {        //if async method, then throw err in proper try catch block
+
+    try {
+        debugger;
+        console.log(newRecipe);
+
+        //debugger;
+        const ingredients = Object.entries(newRecipe)
+            .filter(x => x[0].startsWith('ingredient') && x[1] !== '')
+            .map(y => {
+                const temp = y[1].replaceAll(' ', '').split(',');
+
+                if (temp.length !== 3) {
+                    throw new Error("wrong input in ingrdients! Please try again");
+                }
+
+                const [quantity, unit, description] = temp;
+                return { quantity: quantity ? +quantity : null, unit, description };
+            });
+
+        console.log(ingredients);
+    }
+    catch (err) {
+        throw err;
+    }
+
+}

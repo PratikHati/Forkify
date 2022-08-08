@@ -32,7 +32,7 @@ class addRecipeView extends View {
     _addHendlerUpload(handler) {
         this._parentElement.addEventListener('submit', function (e) {
 
-            const dataArr = [...new FormData(this)];    //use spread operator as upload class has barious key value data that need to store in an array
+            const dataArr = [...new FormData(this)];    //use spread operator as upload class has various key value data that need to store in an array
             const data = Object.fromEntries(dataArr);
             handler(data);
         });

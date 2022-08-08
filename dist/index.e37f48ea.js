@@ -549,7 +549,9 @@ var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _regeneratorRuntime = require("regenerator-runtime");
-if (module.hot) module.hot.accept();
+// if (module.hot) {
+//   module.hot.accept();
+// }
 const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
@@ -619,7 +621,12 @@ const controlAddBookmark = async function() {
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
 };
 const controlRecipeUpload = async function(Recipe) {
-    console.log(Recipe);
+    //console.log(Recipe);
+    try {
+        await _modelJs.uploadRecipe(Recipe);
+    } catch (err) {
+        console.log(err);
+    }
 };
 const controlBookmarkView = async function() {
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
@@ -636,7 +643,7 @@ const init = function() {
 };
 init();
 
-},{"core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","regenerator-runtime":"dXNgZ","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj"}],"49tUX":[function(require,module,exports) {
+},{"core-js/modules/web.immediate.js":"49tUX","regenerator-runtime/runtime":"dXNgZ","./model.js":"Y4A21","./views/recipeView.js":"l60JC","./views/searchView.js":"9OQAM","./views/resultsView.js":"cSbZE","./views/paginationView.js":"6z7bi","./views/bookmarksView.js":"4Lqzq","./views/addRecipeView.js":"i6DNj","regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"49tUX":[function(require,module,exports) {
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
 require("../modules/web.clear-immediate");
 require("../modules/web.set-immediate");
@@ -2308,6 +2315,7 @@ parcelHelpers.export(exports, "getResultByPage", ()=>getResultByPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 parcelHelpers.export(exports, "receipeAddBookmarked", ()=>receipeAddBookmarked);
 parcelHelpers.export(exports, "receipeRemoveBookmarked", ()=>receipeRemoveBookmarked);
+parcelHelpers.export(exports, "uploadRecipe", ()=>uploadRecipe);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./Config.js");
 var _helperJs = require("./views/helper.js");
@@ -2407,6 +2415,26 @@ function init() {
     if (storage) state.bookmark = JSON.parse(storage); //string in chrome storage , then convert to object
 }
 init();
+const uploadRecipe = async function(newRecipe) {
+    try {
+        debugger;
+        console.log(newRecipe);
+        //debugger;
+        const ingredients = Object.entries(newRecipe).filter((x)=>x[0].startsWith("ingredient") && x[1] !== "").map((y)=>{
+            const temp = y[1].replaceAll(" ", "").split(",");
+            if (temp.length !== 3) throw new Error("wrong input in ingrdients! Please try again");
+            const [quantity, unit, description] = temp;
+            return {
+                quantity: quantity ? +quantity : null,
+                unit,
+                description
+            };
+        });
+        console.log(ingredients);
+    } catch (err) {
+        throw err;
+    }
+};
 
 },{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -3015,7 +3043,7 @@ class resultsView extends (0, _viewJsDefault.default) {
 }
 exports.default = new resultsView;
 
-},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./previewView.js":"1FDQ6"}],"1FDQ6":[function(require,module,exports) {
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","./previewView.js":"1FDQ6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1FDQ6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _viewJs = require("./View.js");
@@ -3107,7 +3135,7 @@ class paginationView extends (0, _viewJsDefault.default) {
 }
 exports.default = new paginationView();
 
-},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../Config.js":"3lOCA"}],"4Lqzq":[function(require,module,exports) {
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","../Config.js":"3lOCA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Lqzq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _viewJs = require("./View.js");
@@ -3130,7 +3158,7 @@ class bookmarksView extends (0, _viewJsDefault.default) {
 }
 exports.default = new bookmarksView;
 
-},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./previewView.js":"1FDQ6"}],"i6DNj":[function(require,module,exports) {
+},{"./View.js":"5cUXS","url:../../img/icons.svg":"loVOp","./previewView.js":"1FDQ6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i6DNj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _viewJs = require("./View.js");
@@ -3164,7 +3192,7 @@ class addRecipeView extends (0, _viewJsDefault.default) {
         this._parentElement.addEventListener("submit", function(e) {
             const dataArr = [
                 ...new FormData(this)
-            ]; //use spread operator as upload class has barious key value data that need to store in an array
+            ]; //use spread operator as upload class has various key value data that need to store in an array
             const data = Object.fromEntries(dataArr);
             handler(data);
         });
