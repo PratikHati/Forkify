@@ -2417,7 +2417,7 @@ function init() {
 init();
 const uploadRecipe = async function(newRecipe) {
     try {
-        debugger;
+        //debugger;
         console.log(newRecipe);
         //debugger;
         const ingredients = Object.entries(newRecipe).filter((x)=>x[0].startsWith("ingredient") && x[1] !== "").map((y)=>{
@@ -2431,6 +2431,17 @@ const uploadRecipe = async function(newRecipe) {
             };
         });
         console.log(ingredients);
+        const recipe = {
+            title: newRecipe.title,
+            publisher: newRecipe.publisher,
+            sourceUrl: newRecipe.source_url,
+            image: newRecipe.image_url,
+            servings: newRecipe.servings,
+            cookingTime: newRecipe.cooking_time,
+            ingredients
+        };
+        console.log(recipe);
+        return recipe;
     } catch (err) {
         throw err;
     }
@@ -2442,9 +2453,11 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "TIME_OUT_SEC", ()=>TIME_OUT_SEC);
 parcelHelpers.export(exports, "COUNT_PER_PAGE", ()=>COUNT_PER_PAGE);
+parcelHelpers.export(exports, "POST_KEY", ()=>POST_KEY);
 const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
 const TIME_OUT_SEC = 10000000;
 const COUNT_PER_PAGE = 10;
+const POST_KEY = "a0c6c5b2-d474-482d-9560-7af7003cb841";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -2480,6 +2493,7 @@ exports.export = function(dest, destName, get) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+parcelHelpers.export(exports, "sendJSON", ()=>sendJSON);
 var _config = require("../Config");
 const timeout = function(s) {
     return new Promise(function(_, reject) {
@@ -2490,8 +2504,24 @@ const timeout = function(s) {
 };
 const getJSON = async function(url) {
     try {
+        const fetchPro = fetch(url);
         const res = await Promise.race([
-            fetch(url),
+            fetchPro,
+            timeout((0, _config.TIME_OUT_SEC))
+        ]); //ajax call with certain timeout period
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.Error);
+        return data; //resrerved value for this promise
+    } catch (error) {
+        //console.log(`${err} second thread`);  will keep promise
+        throw error; //will reject promise
+    }
+};
+const sendJSON = async function(url) {
+    try {
+        const fetchPro = fetch(url);
+        const res = await Promise.race([
+            fetchPro,
             timeout((0, _config.TIME_OUT_SEC))
         ]); //ajax call with certain timeout period
         const data = await res.json();

@@ -159,7 +159,7 @@ init();
 export const uploadRecipe = async function (newRecipe) {        //if async method, then throw err in proper try catch block
 
     try {
-        debugger;
+        //debugger;
         console.log(newRecipe);
 
         //debugger;
@@ -177,6 +177,21 @@ export const uploadRecipe = async function (newRecipe) {        //if async metho
             });
 
         console.log(ingredients);
+
+        const recipe = {
+            title: newRecipe.title,
+            publisher: newRecipe.publisher,
+            sourceUrl: newRecipe.source_url,
+            image: newRecipe.image_url,
+            servings: newRecipe.servings,
+            cookingTime: newRecipe.cooking_time,
+            ingredients
+        };
+
+        console.log(recipe);
+
+
+        return recipe;
     }
     catch (err) {
         throw err;
