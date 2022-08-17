@@ -1,6 +1,6 @@
 import { async } from "regenerator-runtime";
-import { API_URL } from "./Config.js";
-import { getJSON } from "./views/helper.js";
+import { API_URL, POST_KEY } from "./Config.js";
+import { getJSON, sendJSON } from "./views/helper.js";
 
 //to store all the state of entire page in a single state
 export const state = {
@@ -178,20 +178,40 @@ export const uploadRecipe = async function (newRecipe) {        //if async metho
 
         console.log(ingredients);
 
-        const recipe = {
+        const rec = {
             title: newRecipe.title,
             publisher: newRecipe.publisher,
             sourceUrl: newRecipe.source_url,
             image: newRecipe.image_url,
-            servings: newRecipe.servings,
-            cookingTime: newRecipe.cooking_time,
+            servings: +newRecipe.servings,
+            cookingTime: +newRecipe.cooking_time,
             ingredients
         };
 
-        console.log(recipe);
+        debugger;
 
+        console.log(`${API_URL}?key=${POST_KEY}`);
 
-        return recipe;
+        const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
+        console.log(data);
+        
+        const { recipe } = data.data;
+
+        //"state" is defined above
+        state.recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients,
+            ...(recipe.key && {key:recipe.key})     //if(recipe.key) then key else as it it
+        };
+
+        receipeAddBookmarked(state.recipe);
+
     }
     catch (err) {
         throw err;

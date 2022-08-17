@@ -9,9 +9,9 @@ import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
+if (module.hot) {
+  module.hot.accept();
+}
 
 const controlRecipe = async function () {
 
@@ -131,6 +131,8 @@ const controlRecipeUpload = async function (Recipe) {
   //console.log(Recipe);
   try {
     await model.uploadRecipe(Recipe);
+
+    console.log(model.state.recipe);
   }
   catch (err) {
     console.log(err);

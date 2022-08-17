@@ -549,9 +549,7 @@ var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _regeneratorRuntime = require("regenerator-runtime");
-// if (module.hot) {
-//   module.hot.accept();
-// }
+if (module.hot) module.hot.accept();
 const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
@@ -624,6 +622,7 @@ const controlRecipeUpload = async function(Recipe) {
     //console.log(Recipe);
     try {
         await _modelJs.uploadRecipe(Recipe);
+        console.log(_modelJs.state.recipe);
     } catch (err) {
         console.log(err);
     }
@@ -2431,17 +2430,35 @@ const uploadRecipe = async function(newRecipe) {
             };
         });
         console.log(ingredients);
-        const recipe = {
+        const rec = {
             title: newRecipe.title,
             publisher: newRecipe.publisher,
             sourceUrl: newRecipe.source_url,
             image: newRecipe.image_url,
-            servings: newRecipe.servings,
-            cookingTime: newRecipe.cooking_time,
+            servings: +newRecipe.servings,
+            cookingTime: +newRecipe.cooking_time,
             ingredients
         };
-        console.log(recipe);
-        return recipe;
+        debugger;
+        console.log(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`);
+        const data = (0, _helperJs.sendJSON)(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`, rec);
+        console.log(data);
+        const { recipe  } = data.data;
+        //"state" is defined above
+        state.recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cookingTime: recipe.cooking_time,
+            ingredients: recipe.ingredients,
+            ...recipe.key && {
+                key: recipe.key
+            } //if(recipe.key) then key else as it it
+        };
+        receipeAddBookmarked(state.recipe);
     } catch (err) {
         throw err;
     }
@@ -2457,7 +2474,7 @@ parcelHelpers.export(exports, "POST_KEY", ()=>POST_KEY);
 const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
 const TIME_OUT_SEC = 10000000;
 const COUNT_PER_PAGE = 10;
-const POST_KEY = "a0c6c5b2-d474-482d-9560-7af7003cb841";
+const POST_KEY = "7a864881-984c-40f1-95c1-558a6402cc37";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
