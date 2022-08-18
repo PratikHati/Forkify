@@ -1,3 +1,4 @@
+
 import { async } from "regenerator-runtime";
 import { API_URL, POST_KEY } from "./Config.js";
 import { getJSON, sendJSON } from "./views/helper.js";
@@ -128,10 +129,19 @@ export const receipeRemoveBookmarked = function (i) {
 
     const index = state.bookmark.findIndex(x => x.id === i);
 
-    debugger;
-
     var temp = state.bookmark;
-    temp.slice(index, 1);  //delete the selected recipe (error)
+    //temp.slice(index, 1);  //delete the selected recipe (error)
+
+    const arr = temp;
+    temp = [];
+    var count = 0;
+
+    for(var v of arr){
+        
+        if(count !== index)
+            temp.push(v);
+        count += 1;
+    }
     state.bookmark = temp;
 
     if (state.recipe.id === i) {     //if  already bookmarked, just fasle mark it
@@ -185,7 +195,7 @@ export const uploadRecipe = async function (newRecipe) {        //if async metho
             image: newRecipe.image_url,
             servings: +newRecipe.servings,
             cookingTime: +newRecipe.cooking_time,
-            ingredients
+            ingredients     //enhanced object literals
         };
 
         debugger;
