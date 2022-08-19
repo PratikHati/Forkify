@@ -196,28 +196,25 @@ export const uploadRecipe = async function (newRecipe) {        //if async metho
             servings: +newRecipe.servings,
             cookingTime: +newRecipe.cooking_time,
             ingredients     //enhanced object literals
-        };
-
-        debugger;
+        };;
 
         console.log(`${API_URL}?key=${POST_KEY}`);
-
         const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
-        console.log(data);
         
-        const { recipe } = data.data;
+        console.log(data);
+        const { r } = data.data;
 
         //"state" is defined above
         state.recipe = {
-            id: recipe.id,
-            title: recipe.title,
-            publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
-            image: recipe.image_url,
-            servings: recipe.servings,
-            cookingTime: recipe.cooking_time,
-            ingredients: recipe.ingredients,
-            ...(recipe.key && {key:recipe.key})     //if(recipe.key) then key else as it it
+            id: r.id,
+            title: r.title,
+            publisher: r.publisher,
+            sourceUrl: r.source_url,
+            image: r.image_url,
+            servings: r.servings,
+            cookingTime: r.cooking_time,
+            ingredients: r.ingredients,
+            ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
         };
 
         receipeAddBookmarked(state.recipe);

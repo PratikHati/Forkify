@@ -12,7 +12,7 @@ const timeout = function (s) {
 export const getJSON = async function (url) {
 
     try {
-        const fetchPro = fetch(url);
+        const fetchPro = fetch(url);    //GET
 
         const res = await Promise.race([fetchPro, timeout(TIME_OUT_SEC)]);  //ajax call with certain timeout period
 
@@ -31,14 +31,22 @@ export const getJSON = async function (url) {
 
 }
 
-export const sendJSON = async function (url) {
+export const sendJSON = async function (url, uploadData) {
 
     try {
-        const fetchPro = fetch(url);
+
+        debugger;
+        const fetchPro = fetch(url, {       //POST
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(uploadData),
+        });
 
         const res = await Promise.race([fetchPro, timeout(TIME_OUT_SEC)]);  //ajax call with certain timeout period
 
-        const data = await res.json();
+        const data = res.json();
 
         if (!res.ok) {
             throw new Error(data.Error);
@@ -48,7 +56,13 @@ export const sendJSON = async function (url) {
     }
     catch (error) {
         //console.log(`${err} second thread`);  will keep promise
+  
         throw error;        //will reject promise
     }
+
+}
+
+
+const renderError = function(msg){
 
 }

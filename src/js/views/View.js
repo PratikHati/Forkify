@@ -4,6 +4,13 @@ import icons from 'url:../../img/icons.svg'; //parcel 2
 export default class View {
   _data;
 
+  /**
+   * render received object to the dom 
+   * @param {object | object[]} data recipe object render to DOM
+   * @param {bool} [render=true] if true, render to DOM else return as string
+   * @returns undefined | string 
+   * @this View object
+   */
   render(data, render = true) {          //first time render
 
 
