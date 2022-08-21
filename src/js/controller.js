@@ -125,17 +125,17 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmark);
 }
 
-const controlRecipeUpload = async function (Recipe) {
-  //console.log(Recipe);
-  try {
-    await model.uploadRecipe(Recipe);
+// const controlRecipeUpload = async function (Recipe) {
+//   //console.log(Recipe);
+//   try {
+//     await model.uploadRecipe(Recipe);
 
-    console.log(model.state.recipe);
-  }
-  catch (err) {
-    console.log(err);
-  }
-}
+//     console.log(model.state.recipe);
+//   }
+//   catch (err) {
+//     console.log(err);
+//   }
+// }
 
 const controlBookmarkView = function () {
 
@@ -155,7 +155,7 @@ const init = function () {
 
   paginationView.addHandlerRender(controlPagination);
 
-  addRecipeView._addHendlerUpload(controlRecipeUpload);
+  //addRecipeView._addHendlerUpload(controlRecipeUpload);
 
   console.log("Application started");
 };

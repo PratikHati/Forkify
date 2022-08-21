@@ -166,82 +166,82 @@ init();
 
 
 //BELOW FUNCTION IS "AWSOME", just think......................................
-export const uploadRecipe = async function (newRecipe) {        //if async method, then throw err in proper try catch block
+// export const uploadRecipe = async function (newRecipe) {        //if async method, then throw err in proper try catch block
 
-    try {
-        //debugger;
-        console.log(newRecipe);
+//     try {
+//         //debugger;
+//         console.log(newRecipe);
 
-        //debugger;
-        const ingredients = Object.entries(newRecipe)
-            .filter(x => x[0].startsWith('ingredient') && x[1] !== '')
-            .map(y => {
-                const temp = y[1].replaceAll(' ', '').split(',');
+//         //debugger;
+//         const ingredients = Object.entries(newRecipe)
+//             .filter(x => x[0].startsWith('ingredient') && x[1] !== '')
+//             .map(y => {
+//                 const temp = y[1].replaceAll(' ', '').split(',');
 
-                if (temp.length !== 3) {
-                    throw new Error("wrong input in ingrdients! Please try again");
-                }
+//                 if (temp.length !== 3) {
+//                     throw new Error("wrong input in ingrdients! Please try again");
+//                 }
 
-                const [quantity, unit, description] = temp;
-                return { quantity: quantity ? +quantity : null, unit, description };
-            });
+//                 const [quantity, unit, description] = temp;
+//                 return { quantity: quantity ? +quantity : null, unit, description };
+//             });
 
-        console.log(ingredients);
+//         console.log(ingredients);
 
-        const rec = {
-            title: newRecipe.title,
-            publisher: newRecipe.publisher,
-            sourceUrl: newRecipe.source_url,
-            image: newRecipe.image_url,
-            servings: +newRecipe.servings,
-            cookingTime: +newRecipe.cooking_time,
-            ingredients     //enhanced object literals
-        };
+//         const rec = {
+//             title: newRecipe.title,
+//             publisher: newRecipe.publisher,
+//             sourceUrl: newRecipe.source_url,
+//             image: newRecipe.image_url,
+//             servings: +newRecipe.servings,
+//             cookingTime: +newRecipe.cooking_time,
+//             ingredients     //enhanced object literals
+//         };
 
-        //receipeAddBookmarked(rec);
+//         //receipeAddBookmarked(rec);
 
 
-        console.log(`${API_URL}?key=${POST_KEY}`);
-        const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
+//         console.log(`${API_URL}?key=${POST_KEY}`);
+//         const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
         
-        console.log(data);
+//         console.log(data);
 
-        data.then( d=> {
-            const { r } = d.data;
-            state.recipe = {
-                id: r.id,
-                title: r.title,
-                publisher: r.publisher,
-                sourceUrl: r.source_url,
-                image: r.image_url,
-                servings: r.servings,
-                cookingTime: r.cooking_time,
-                ingredients: r.ingredients,
-                ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
-            };
+//         data.then( d=> {
+//             const { r } = d.data;
+//             state.recipe = {
+//                 id: r.id,
+//                 title: r.title,
+//                 publisher: r.publisher,
+//                 sourceUrl: r.source_url,
+//                 image: r.image_url,
+//                 servings: r.servings,
+//                 cookingTime: r.cooking_time,
+//                 ingredients: r.ingredients,
+//                 ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+//             };
     
             
-        });
-        const { r } = data.data;
+//         });
+//         const { r } = data.data;
 
-        //"state" is defined above
-        state.recipe = {
-            id: r.id,
-            title: r.title,
-            publisher: r.publisher,
-            sourceUrl: r.source_url,
-            image: r.image_url,
-            servings: r.servings,
-            cookingTime: r.cooking_time,
-            ingredients: r.ingredients,
-            ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
-        };
+//         //"state" is defined above
+//         state.recipe = {
+//             id: r.id,
+//             title: r.title,
+//             publisher: r.publisher,
+//             sourceUrl: r.source_url,
+//             image: r.image_url,
+//             servings: r.servings,
+//             cookingTime: r.cooking_time,
+//             ingredients: r.ingredients,
+//             ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+//         };
 
-        receipeAddBookmarked(state.recipe);
+//         receipeAddBookmarked(state.recipe);
 
-    }
-    catch (err) {
-        throw err;
-    }
+//     }
+//     catch (err) {
+//         throw err;
+//     }
 
-}
+// }

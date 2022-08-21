@@ -617,15 +617,16 @@ const controlAddBookmark = function() {
     //3.Render bookmark only at left upper side of UI
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
 };
-const controlRecipeUpload = async function(Recipe) {
-    //console.log(Recipe);
-    try {
-        await _modelJs.uploadRecipe(Recipe);
-        console.log(_modelJs.state.recipe);
-    } catch (err) {
-        console.log(err);
-    }
-};
+// const controlRecipeUpload = async function (Recipe) {
+//   //console.log(Recipe);
+//   try {
+//     await model.uploadRecipe(Recipe);
+//     console.log(model.state.recipe);
+//   }
+//   catch (err) {
+//     console.log(err);
+//   }
+// }
 const controlBookmarkView = function() {
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
 };
@@ -637,7 +638,7 @@ const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerBookmark(controlAddBookmark);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearch);
     (0, _paginationViewJsDefault.default).addHandlerRender(controlPagination);
-    (0, _addRecipeViewJsDefault.default)._addHendlerUpload(controlRecipeUpload);
+    //addRecipeView._addHendlerUpload(controlRecipeUpload);
     console.log("Application started");
 };
 init();
@@ -2314,7 +2315,6 @@ parcelHelpers.export(exports, "getResultByPage", ()=>getResultByPage);
 parcelHelpers.export(exports, "updateServings", ()=>updateServings);
 parcelHelpers.export(exports, "receipeAddBookmarked", ()=>receipeAddBookmarked);
 parcelHelpers.export(exports, "receipeRemoveBookmarked", ()=>receipeRemoveBookmarked);
-parcelHelpers.export(exports, "uploadRecipe", ()=>uploadRecipe);
 var _regeneratorRuntime = require("regenerator-runtime");
 var _configJs = require("./Config.js");
 var _helperJs = require("./views/helper.js");
@@ -2419,72 +2419,69 @@ function init() {
     const storage = localStorage.getItem("bookmarks");
     if (storage) state.bookmark = JSON.parse(storage); //string in chrome storage , then convert to object
 }
-init();
-const uploadRecipe = async function(newRecipe) {
-    try {
-        //debugger;
-        console.log(newRecipe);
-        //debugger;
-        const ingredients = Object.entries(newRecipe).filter((x)=>x[0].startsWith("ingredient") && x[1] !== "").map((y)=>{
-            const temp = y[1].replaceAll(" ", "").split(",");
-            if (temp.length !== 3) throw new Error("wrong input in ingrdients! Please try again");
-            const [quantity, unit, description] = temp;
-            return {
-                quantity: quantity ? +quantity : null,
-                unit,
-                description
-            };
-        });
-        console.log(ingredients);
-        const rec = {
-            title: newRecipe.title,
-            publisher: newRecipe.publisher,
-            sourceUrl: newRecipe.source_url,
-            image: newRecipe.image_url,
-            servings: +newRecipe.servings,
-            cookingTime: +newRecipe.cooking_time,
-            ingredients
-        };
-        //receipeAddBookmarked(rec);
-        console.log(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`);
-        const data = (0, _helperJs.sendJSON)(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`, rec);
-        console.log(data);
-        data.then((d)=>{
-            const { r  } = d.data;
-            state.recipe = {
-                id: r.id,
-                title: r.title,
-                publisher: r.publisher,
-                sourceUrl: r.source_url,
-                image: r.image_url,
-                servings: r.servings,
-                cookingTime: r.cooking_time,
-                ingredients: r.ingredients,
-                ...recipe.key && {
-                    key: r.key
-                } //if(recipe.key) then key else as it it
-            };
-        });
-        const { r: r1  } = data.data;
-        //"state" is defined above
-        state.recipe = {
-            id: r1.id,
-            title: r1.title,
-            publisher: r1.publisher,
-            sourceUrl: r1.source_url,
-            image: r1.image_url,
-            servings: r1.servings,
-            cookingTime: r1.cooking_time,
-            ingredients: r1.ingredients,
-            ...recipe.key && {
-                key: r1.key
-            } //if(recipe.key) then key else as it it
-        };
-        receipeAddBookmarked(state.recipe);
-    } catch (err) {
-        throw err;
-    }
-};
+init(); //BELOW FUNCTION IS "AWSOME", just think......................................
+ // export const uploadRecipe = async function (newRecipe) {        //if async method, then throw err in proper try catch block
+ //     try {
+ //         //debugger;
+ //         console.log(newRecipe);
+ //         //debugger;
+ //         const ingredients = Object.entries(newRecipe)
+ //             .filter(x => x[0].startsWith('ingredient') && x[1] !== '')
+ //             .map(y => {
+ //                 const temp = y[1].replaceAll(' ', '').split(',');
+ //                 if (temp.length !== 3) {
+ //                     throw new Error("wrong input in ingrdients! Please try again");
+ //                 }
+ //                 const [quantity, unit, description] = temp;
+ //                 return { quantity: quantity ? +quantity : null, unit, description };
+ //             });
+ //         console.log(ingredients);
+ //         const rec = {
+ //             title: newRecipe.title,
+ //             publisher: newRecipe.publisher,
+ //             sourceUrl: newRecipe.source_url,
+ //             image: newRecipe.image_url,
+ //             servings: +newRecipe.servings,
+ //             cookingTime: +newRecipe.cooking_time,
+ //             ingredients     //enhanced object literals
+ //         };
+ //         //receipeAddBookmarked(rec);
+ //         console.log(`${API_URL}?key=${POST_KEY}`);
+ //         const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
+ //         console.log(data);
+ //         data.then( d=> {
+ //             const { r } = d.data;
+ //             state.recipe = {
+ //                 id: r.id,
+ //                 title: r.title,
+ //                 publisher: r.publisher,
+ //                 sourceUrl: r.source_url,
+ //                 image: r.image_url,
+ //                 servings: r.servings,
+ //                 cookingTime: r.cooking_time,
+ //                 ingredients: r.ingredients,
+ //                 ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+ //             };
+ //         });
+ //         const { r } = data.data;
+ //         //"state" is defined above
+ //         state.recipe = {
+ //             id: r.id,
+ //             title: r.title,
+ //             publisher: r.publisher,
+ //             sourceUrl: r.source_url,
+ //             image: r.image_url,
+ //             servings: r.servings,
+ //             cookingTime: r.cooking_time,
+ //             ingredients: r.ingredients,
+ //             ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+ //         };
+ //         receipeAddBookmarked(state.recipe);
+ //     }
+ //     catch (err) {
+ //         throw err;
+ //     }
+ // }
 
 },{"regenerator-runtime":"dXNgZ","./Config.js":"3lOCA","./views/helper.js":"eA19p","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3lOCA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
