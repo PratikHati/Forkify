@@ -36,7 +36,7 @@ export const sendJSON = async function (url, uploadData) {
     try {
 
         debugger;
-        const fetchPro = fetch(url, {       //POST
+        const fetchPro = await  fetch(url, {       //POST
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
@@ -44,9 +44,11 @@ export const sendJSON = async function (url, uploadData) {
             body: JSON.stringify(uploadData),
         });
 
-        const res = await Promise.race([fetchPro, timeout(TIME_OUT_SEC)]);  //ajax call with certain timeout period
+        console.log(fetchPro);
 
-        const data = res.json();
+       // const res =  Promise.race([fetchPro, timeout(TIME_OUT_SEC)]);  //ajax call with certain timeout period
+
+        const data = await fetchPro.json();
 
         if (!res.ok) {
             throw new Error(data.Error);
@@ -59,10 +61,5 @@ export const sendJSON = async function (url, uploadData) {
   
         throw error;        //will reject promise
     }
-
-}
-
-
-const renderError = function(msg){
 
 }

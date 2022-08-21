@@ -2445,25 +2445,38 @@ const uploadRecipe = async function(newRecipe) {
             cookingTime: +newRecipe.cooking_time,
             ingredients
         };
-        console.log(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`);
-        const data = (0, _helperJs.sendJSON)(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`, rec);
-        console.log(data);
-        const { r  } = data.data;
-        //"state" is defined above
-        state.recipe = {
-            id: r.id,
-            title: r.title,
-            publisher: r.publisher,
-            sourceUrl: r.source_url,
-            image: r.image_url,
-            servings: r.servings,
-            cookingTime: r.cooking_time,
-            ingredients: r.ingredients,
-            ...recipe.key && {
-                key: r.key
-            } //if(recipe.key) then key else as it it
-        };
-        receipeAddBookmarked(state.recipe);
+        receipeAddBookmarked(rec);
+    // console.log(`${API_URL}?key=${POST_KEY}`);
+    // const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
+    // console.log(data);
+    // data.then( d=> {
+    //     const { r } = d.data;
+    //     state.recipe = {
+    //         id: r.id,
+    //         title: r.title,
+    //         publisher: r.publisher,
+    //         sourceUrl: r.source_url,
+    //         image: r.image_url,
+    //         servings: r.servings,
+    //         cookingTime: r.cooking_time,
+    //         ingredients: r.ingredients,
+    //         ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+    //     };
+    //});
+    //const { r } = data.data;
+    //"state" is defined above
+    // state.recipe = {
+    //     id: r.id,
+    //     title: r.title,
+    //     publisher: r.publisher,
+    //     sourceUrl: r.source_url,
+    //     image: r.image_url,
+    //     servings: r.servings,
+    //     cookingTime: r.cooking_time,
+    //     ingredients: r.ingredients,
+    //     ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
+    // };
+    // receipeAddBookmarked(state.recipe);
     } catch (err) {
         throw err;
     }
@@ -2542,18 +2555,16 @@ const getJSON = async function(url) {
 const sendJSON = async function(url, uploadData) {
     try {
         debugger;
-        const fetchPro = fetch(url, {
+        const fetchPro = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(uploadData)
         });
-        const res = await Promise.race([
-            fetchPro,
-            timeout((0, _config.TIME_OUT_SEC))
-        ]); //ajax call with certain timeout period
-        const data = res.json();
+        console.log(fetchPro);
+        // const res =  Promise.race([fetchPro, timeout(TIME_OUT_SEC)]);  //ajax call with certain timeout period
+        const data = await fetchPro.json();
         if (!res.ok) throw new Error(data.Error);
         return data; //resrerved value for this promise
     } catch (error) {
@@ -2561,7 +2572,6 @@ const sendJSON = async function(url, uploadData) {
         throw error; //will reject promise
     }
 };
-const renderError = function(msg) {};
 
 },{"../Config":"3lOCA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l60JC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -2995,7 +3005,8 @@ class View {
    * @param {object | object[]} data recipe object render to DOM
    * @param {bool} [render=true] if true, render to DOM else return as string
    * @returns undefined | string 
-   * @this View object
+   * @this {object} View instance
+   * @coder Pratik
    */ render(data, render = true) {
         if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data; //API data  

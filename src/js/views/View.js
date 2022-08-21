@@ -9,7 +9,8 @@ export default class View {
    * @param {object | object[]} data recipe object render to DOM
    * @param {bool} [render=true] if true, render to DOM else return as string
    * @returns undefined | string 
-   * @this View object
+   * @this {object} View instance
+   * @coder Pratik
    */
   render(data, render = true) {          //first time render
 
