@@ -549,9 +549,6 @@ var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _regeneratorRuntime = require("regenerator-runtime");
-// if (module.hot) {
-//   module.hot.accept();
-// }
 const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
@@ -641,6 +638,7 @@ const init = function() {
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearch);
     (0, _paginationViewJsDefault.default).addHandlerRender(controlPagination);
     (0, _addRecipeViewJsDefault.default)._addHendlerUpload(controlRecipeUpload);
+    console.log("Application started");
 };
 init();
 
@@ -2447,38 +2445,42 @@ const uploadRecipe = async function(newRecipe) {
             cookingTime: +newRecipe.cooking_time,
             ingredients
         };
-        receipeAddBookmarked(rec);
-    // console.log(`${API_URL}?key=${POST_KEY}`);
-    // const data  =  sendJSON(`${API_URL}?key=${POST_KEY}`, rec);
-    // console.log(data);
-    // data.then( d=> {
-    //     const { r } = d.data;
-    //     state.recipe = {
-    //         id: r.id,
-    //         title: r.title,
-    //         publisher: r.publisher,
-    //         sourceUrl: r.source_url,
-    //         image: r.image_url,
-    //         servings: r.servings,
-    //         cookingTime: r.cooking_time,
-    //         ingredients: r.ingredients,
-    //         ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
-    //     };
-    //});
-    //const { r } = data.data;
-    //"state" is defined above
-    // state.recipe = {
-    //     id: r.id,
-    //     title: r.title,
-    //     publisher: r.publisher,
-    //     sourceUrl: r.source_url,
-    //     image: r.image_url,
-    //     servings: r.servings,
-    //     cookingTime: r.cooking_time,
-    //     ingredients: r.ingredients,
-    //     ...(recipe.key && {key:r.key})     //if(recipe.key) then key else as it it
-    // };
-    // receipeAddBookmarked(state.recipe);
+        //receipeAddBookmarked(rec);
+        console.log(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`);
+        const data = (0, _helperJs.sendJSON)(`${(0, _configJs.API_URL)}?key=${(0, _configJs.POST_KEY)}`, rec);
+        console.log(data);
+        data.then((d)=>{
+            const { r  } = d.data;
+            state.recipe = {
+                id: r.id,
+                title: r.title,
+                publisher: r.publisher,
+                sourceUrl: r.source_url,
+                image: r.image_url,
+                servings: r.servings,
+                cookingTime: r.cooking_time,
+                ingredients: r.ingredients,
+                ...recipe.key && {
+                    key: r.key
+                } //if(recipe.key) then key else as it it
+            };
+        });
+        const { r: r1  } = data.data;
+        //"state" is defined above
+        state.recipe = {
+            id: r1.id,
+            title: r1.title,
+            publisher: r1.publisher,
+            sourceUrl: r1.source_url,
+            image: r1.image_url,
+            servings: r1.servings,
+            cookingTime: r1.cooking_time,
+            ingredients: r1.ingredients,
+            ...recipe.key && {
+                key: r1.key
+            } //if(recipe.key) then key else as it it
+        };
+        receipeAddBookmarked(state.recipe);
     } catch (err) {
         throw err;
     }

@@ -9,9 +9,7 @@ import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
+
 
 const controlRecipe = async function () {
 
@@ -159,6 +157,7 @@ const init = function () {
 
   addRecipeView._addHendlerUpload(controlRecipeUpload);
 
+  console.log("Application started");
 };
 
 init();
