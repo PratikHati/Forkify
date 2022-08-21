@@ -549,7 +549,9 @@ var _bookmarksViewJsDefault = parcelHelpers.interopDefault(_bookmarksViewJs);
 var _addRecipeViewJs = require("./views/addRecipeView.js");
 var _addRecipeViewJsDefault = parcelHelpers.interopDefault(_addRecipeViewJs);
 var _regeneratorRuntime = require("regenerator-runtime");
-if (module.hot) module.hot.accept();
+// if (module.hot) {
+//   module.hot.accept();
+// }
 const controlRecipe = async function() {
     try {
         //async is used to create a new thread with out affecting original application thread
@@ -594,7 +596,7 @@ const controlSearch = async function() {
         throw err;
     }
 };
-const controlPagination = async function(gotoValue) {
+const controlPagination = function(gotoValue) {
     //1.Render 
     (0, _resultsViewJsDefault.default).render(_modelJs.getResultByPage(gotoValue)); //variable 'page' gets updated in this line in model.js
     //2.Pagination 
@@ -607,7 +609,7 @@ const controlServings = async function(newserving) {
     // recipeView.render(model.state.recipe);
     (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
-const controlAddBookmark = async function() {
+const controlAddBookmark = function() {
     if (!_modelJs.state.recipe.bookmarked) //1.make bookmarked = yes
     _modelJs.receipeAddBookmarked(_modelJs.state.recipe);
     else //1.make bookmarked = No
@@ -627,7 +629,7 @@ const controlRecipeUpload = async function(Recipe) {
         console.log(err);
     }
 };
-const controlBookmarkView = async function() {
+const controlBookmarkView = function() {
     (0, _bookmarksViewJsDefault.default).render(_modelJs.state.bookmark);
 };
 //first init() will run when page load

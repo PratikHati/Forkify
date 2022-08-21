@@ -9,9 +9,9 @@ import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 import { async } from 'regenerator-runtime';
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
 const controlRecipe = async function () {
 
@@ -86,7 +86,7 @@ const controlSearch = async function () {
   }
 };
 
-const controlPagination = async function (gotoValue) {
+const controlPagination =  function (gotoValue) {
 
   //1.Render 
   resultsView.render(model.getResultByPage(gotoValue));   //variable 'page' gets updated in this line in model.js
@@ -106,7 +106,7 @@ const controlServings = async function (newserving) {
 };
 
 
-const controlAddBookmark = async function () {
+const controlAddBookmark = function () {
 
   if (!model.state.recipe.bookmarked) {
 
@@ -139,7 +139,7 @@ const controlRecipeUpload = async function (Recipe) {
   }
 }
 
-const controlBookmarkView = async function () {
+const controlBookmarkView = function () {
 
   bookmarksView.render(model.state.bookmark);
 }
